@@ -1,0 +1,26 @@
+import React from 'react';
+
+import Header from '../components/header';
+import Footer from '../components/footer';
+import SideBar from '../components/sidebar';
+import NavigationBottom from '../components/navigationBottom';
+
+interface Props {
+    children: React.ReactNode;
+}
+
+export default function Index({ children }: Props) {
+    return (
+        <>
+            <Header />
+            <section className="grid grid-cols-[384px_1fr] pb-[100px] sm-md:grid-cols-[1fr]">
+                <aside className="sm-md:hidden bg-customColor-bgSideBar">
+                    <SideBar />
+                </aside>
+                <main className="pt-[60px] ps-[72px]">{children}</main>
+                <Footer />
+            </section>
+            <NavigationBottom />
+        </>
+    );
+}

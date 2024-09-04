@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans leading-main bg-customColor-bg;
+    }
+}
+
+@layer utilities {
+    .scrollbar-custom {
+        scrollbar-width: thin; /* Dùng cho Firefox */
+        scrollbar-color: #444444; /* thumb và track cho Firefox */
+    }
+
+    .scrollbar-custom::-webkit-scrollbar {
+        width: 4px; /* Độ rộng của thanh cuộn */
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+        background-color: #444444; /* Màu của thumb */
+        border-radius: 4px;
+    }
+}
