@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Header from '../components/header';
-import Footer from '../components/footer';
-import SideBar from '../components/sidebar';
-import NavigationBottom from '../components/navigationBottom';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import SideBar from '@/components/sidebar';
+import NavigationBottom from '@/components/navigationBottom';
 
 interface Props {
     children: React.ReactNode;

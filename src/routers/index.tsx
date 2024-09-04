@@ -3,8 +3,8 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import PrivateRoute from './privateRoute';
 
-const Layout = React.lazy(() => import('../layout'));
-const Home = React.lazy(() => import('../pages/Home'));
+const Layout = React.lazy(() => import('@/layout'));
+const Home = React.lazy(() => import('@/pages/Home'));
 
 const router = createBrowserRouter([
     {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/images/5f5356c6bf7ad09a4bc9223cf055cfcc.png';
-import avatar from '../../assets/images/avatar.jpeg';
+import logo from '@/assets/images/5f5356c6bf7ad09a4bc9223cf055cfcc.png';
+import avatar from '@/assets/images/avatar.jpeg';
 
 export default function Index() {
     const [openDropdown, setOpenDropdown] = React.useState(false);

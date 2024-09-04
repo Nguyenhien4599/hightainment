@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import ModalBottomToTop from '../modalBottomToTop';
 import Item from '../sidebar/Item';
-import { listText } from '../../const/listTextSideBar';
+import { listText } from '@/const/listTextSideBar';
 
 export default function Index() {
     const [isOpenState, setIsOpen] = React.useState(false);

@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
-
-import { listText } from '../../const/listTextSideBar';
+import { listText } from '@/const/listTextSideBar';
 import Item from './Item';
 
 export default function Index() {
