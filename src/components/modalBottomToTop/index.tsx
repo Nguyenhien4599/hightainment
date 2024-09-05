@@ -23,13 +23,13 @@ export default function index({ title, children, isOpen, closeModal }: Props) {
                 <h2 className="text-white text-2xl leading-4 font-medium">{title}</h2>
                 <span onClick={handleClose}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <g clip-path="url(#clip0_114_7017)">
+                        <g clipPath="url(#clip0_114_7017)">
                             <path
                                 d="M1.25 18.75L18.75 1.25M18.75 18.75L1.25 1.25"
                                 stroke="white"
                                 strokeWidth="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             />
                         </g>
                         <defs>

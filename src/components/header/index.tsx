@@ -22,8 +22,8 @@ export default function Index() {
                                 d="M18.8511 14.6085C20.4492 11.2632 19.8628 7.13498 17.0919 4.36407C13.5772 0.849348 7.87868 0.849348 4.36396 4.36407C0.849242 7.87879 0.849242 13.5773 4.36396 17.092C7.87868 20.6067 13.5772 20.6067 17.0919 17.092L20.6274 20.6275"
                                 stroke="#EFA1BB"
                                 strokeWidth="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             />
                         </svg>
                     </button>
@@ -74,8 +74,8 @@ export default function Index() {
                                 d="M18.8511 14.6084C20.4492 11.263 19.8628 7.13485 17.0919 4.36394C13.5772 0.849226 7.87868 0.849226 4.36396 4.36394C0.849242 7.87866 0.849242 13.5771 4.36396 17.0919C7.87868 20.6066 13.5772 20.6066 17.0919 17.0919L20.6274 20.6274"
                                 stroke="#EFA1BB"
                                 strokeWidth="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             />
                         </svg>
                     </span>

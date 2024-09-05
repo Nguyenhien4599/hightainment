@@ -1,5 +1,7 @@
 import React from 'react';
 
-export default function index() {
-    return <></>;
+import FilterSearch from '@/components/filterSearch';
+
+export default function Index() {
+    return <FilterSearch />;
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Index() {
     return (
-        <footer className="mt-[120px] col-start-2 col-end-3 sm-md:col-auto sm-md:px-6">
+        <footer className="pt-[120px] pb-[100px] col-start-2 col-end-3 sm-md:col-auto sm-md:px-6">
             <nav className="mb-[22px]">
                 <Link to="/" className="text-[#999] text-xs leading-4 font-medium">
                     Privacy Policy

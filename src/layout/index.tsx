@@ -13,7 +13,7 @@ export default function Index({ children }: Props) {
     return (
         <>
             <Header />
-            <section className="grid grid-cols-[384px_1fr] pb-[100px] sm-md:grid-cols-[1fr]">
+            <section className="grid grid-cols-[384px_1fr] sm-md:grid-cols-[1fr]">
                 <aside className="sm-md:hidden bg-customColor-bgSideBar">
                     <SideBar />
                 </aside>
