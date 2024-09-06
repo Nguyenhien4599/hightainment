@@ -7,6 +7,7 @@ const customStyles = {
         ...provided,
         color: '#999',
         fontSize: '20px',
+        fontWeight: '700',
     }),
     control: (provided: any, state: any) => ({
         ...provided,
@@ -124,14 +125,12 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag }: Prop
     const refEl = React.useRef<HTMLDivElement | null>(null);
     const [toggleOpen, setToggleOpen] = React.useState(false);
 
-    const handleToggleMenu = () => {
-        setToggleOpen(!toggleOpen);
+    const handleToggleMenu = (type: string) => () => {
+        setToggleOpen(type === 'open' ? true : false);
         if (refEl.current) {
             const tagName = (refEl.current as HTMLElement).previousElementSibling?.tagName;
             if (tagName !== 'BUTTON') {
-                const element = refEl.current.previousElementSibling;
-                if (!element?.classList.contains('border-r-0'))
-                    refEl.current.previousElementSibling?.classList.add('border-r-0');
+                if (type === 'open') refEl.current.previousElementSibling?.classList.add('border-r-0');
                 else refEl.current.previousElementSibling?.classList.remove('border-r-0');
             }
         }
@@ -141,7 +140,7 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag }: Prop
         <div
             ref={refEl}
             className={clsx(
-                'px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0 ',
+                'px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0',
                 toggleOpen ? 'border !border-customColor-primary' : 'border-r border-r-[#666]',
             )}
         >
@@ -150,8 +149,8 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag }: Prop
                 isMulti
                 options={options}
                 styles={customStyles}
-                onMenuOpen={handleToggleMenu}
-                onMenuClose={handleToggleMenu}
+                onMenuOpen={handleToggleMenu('open')}
+                onMenuClose={handleToggleMenu('close')}
                 className="flex-1 h-full"
                 placeholder={placeholderText}
                 components={{

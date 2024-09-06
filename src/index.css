@@ -25,3 +25,17 @@
         border-radius: 4px;
     }
 }
+
+/* sstyle riêng cho thư viện react-datepicker */
+
+.react-datepicker__tab-loop {
+    position: absolute;
+    top: 0;
+}
+
+.react-datepicker__input-container > input::placeholder {
+    color: #bbb;
+    letter-spacing: -0.5px;
+    font-size: 14px;
+    font-weight: 400;
+}
