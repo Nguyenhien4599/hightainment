@@ -107,7 +107,13 @@ export default function Index() {
                     </span>
                 </button>
                 {listFilter.map((f, i) => (
-                    <FilterSearchSelectItem placeholderText={f.text} svgTag={f.icon} key={i} />
+                    <FilterSearchSelectItem
+                        openOptions={openOptions}
+                        setOpenOptions={setOpenOptions}
+                        placeholderText={f.text}
+                        svgTag={f.icon}
+                        key={i}
+                    />
                 ))}
 
                 <div
@@ -124,9 +130,9 @@ export default function Index() {
                             <path
                                 d="M5 12H19M12 19V5"
                                 stroke="#EFA1BB"
-                                stroke-width="3"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                             />
                         </svg>
                     </span>
@@ -137,7 +143,7 @@ export default function Index() {
                     <div className="w-full absolute top-full p-6 bg-[#333] border border-customColor-primary">
                         <section>
                             <h2 className="text-white text-2xl leading-5 font-bold mb-6">Date</h2>
-                            <div className="grid grid-cols-[370px_370px_370px] grid-rows-[46px_46px] gap-x-[14px] gap-y-[17px] mb-6">
+                            <div className="grid grid-cols-[1fr_1fr_1fr] grid-rows-[46px_46px] gap-x-[14px] gap-y-[17px] mb-6">
                                 <button className="w-full rounded-lg bg-[#333] border border-[#999] text-white text-left text-base leading-none font-bold cursor-pointer px-4">
                                     1895 ~ 1920
                                 </button>
@@ -157,7 +163,7 @@ export default function Index() {
                                     New Release
                                 </button>
                             </div>
-                            <div className="grid grid-cols-[551px_12px_551px] gap-x-3">
+                            <div className="grid grid-cols-[1fr_12px_1fr] gap-x-3">
                                 <DatePicker
                                     placeholderText="Start date"
                                     className="w-full h-full rounded-lg bg-[#222] border border-[#434343] px-4 py-3 outline-none text-white text-base font-bold"

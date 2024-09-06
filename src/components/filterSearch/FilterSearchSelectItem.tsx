@@ -119,13 +119,16 @@ const options = [
 interface Props {
     placeholderText: string;
     svgTag: React.ReactNode;
+    openOptions: boolean;
+    setOpenOptions: Function;
 }
 
-export default function FilterSearchSelectItem({ placeholderText, svgTag }: Props) {
+export default function FilterSearchSelectItem({ placeholderText, svgTag, openOptions, setOpenOptions }: Props) {
     const refEl = React.useRef<HTMLDivElement | null>(null);
     const [toggleOpen, setToggleOpen] = React.useState(false);
 
     const handleToggleMenu = (type: string) => () => {
+        if (openOptions) setOpenOptions(false);
         setToggleOpen(type === 'open' ? true : false);
         if (refEl.current) {
             const tagName = (refEl.current as HTMLElement).previousElementSibling?.tagName;
