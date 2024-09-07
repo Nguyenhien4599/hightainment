@@ -82,22 +82,27 @@ const listFilter = [
 
 export default function Index() {
     const refEl = React.useRef<HTMLDivElement | null>(null);
+    const optionsRef = React.useRef<HTMLDivElement | null>(null);
     const [openOptions, setOpenOptions] = React.useState(false);
 
     React.useEffect(() => {
-        if (refEl.current && !openOptions) refEl.current.previousElementSibling?.classList.remove('border-r-0');
-    }, [openOptions]);
-
-    React.useEffect(() => {
         const handleCloseMenu = (e: MouseEvent) => {
-            if (!refEl.current?.contains(e.target as Node)) setOpenOptions(false);
+            if (
+                !optionsRef.current?.contains(e.target as Node) &&
+                !refEl.current?.contains(e.target as Node) &&
+                openOptions
+            ) {
+                setOpenOptions(false);
+            }
         };
+
+        if (refEl.current && !openOptions) refEl.current.previousElementSibling?.classList.remove('border-r-0');
         document.addEventListener('click', handleCloseMenu as EventListener);
 
         return () => {
             document.removeEventListener('click', handleCloseMenu as EventListener);
         };
-    }, []);
+    }, [openOptions]);
 
     const handleOpenOptions = () => {
         setOpenOptions(!openOptions);
@@ -151,7 +156,10 @@ export default function Index() {
                 </div>
 
                 {openOptions && (
-                    <div className="w-full absolute top-full p-6 bg-[#333] border border-customColor-primary">
+                    <div
+                        ref={optionsRef}
+                        className="w-full absolute top-full p-6 bg-[#333] border border-customColor-primary"
+                    >
                         <section>
                             <h2 className="text-white text-2xl leading-5 font-bold mb-6">Date</h2>
                             <div className="grid grid-cols-[1fr_1fr_1fr] grid-rows-[46px_46px] gap-x-[14px] gap-y-[17px] mb-6">
