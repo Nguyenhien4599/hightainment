@@ -125,6 +125,7 @@ interface Props {
 
 export default function FilterSearchSelectItem({ placeholderText, svgTag, openOptions, setOpenOptions }: Props) {
     const refEl = React.useRef<HTMLDivElement | null>(null);
+    const selectRef = React.useRef(null);
     const [toggleOpen, setToggleOpen] = React.useState(false);
 
     const handleToggleMenu = (type: string) => () => {
@@ -149,6 +150,7 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
         >
             <span>{svgTag}</span>
             <Select
+                ref={selectRef}
                 isMulti
                 options={options}
                 styles={customStyles}

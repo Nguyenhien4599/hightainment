@@ -88,6 +88,17 @@ export default function Index() {
         if (refEl.current && !openOptions) refEl.current.previousElementSibling?.classList.remove('border-r-0');
     }, [openOptions]);
 
+    React.useEffect(() => {
+        const handleCloseMenu = (e: MouseEvent) => {
+            if (!refEl.current?.contains(e.target as Node)) setOpenOptions(false);
+        };
+        document.addEventListener('click', handleCloseMenu as EventListener);
+
+        return () => {
+            document.removeEventListener('click', handleCloseMenu as EventListener);
+        };
+    });
+
     const handleOpenOptions = () => {
         setOpenOptions(!openOptions);
         if (refEl.current) refEl.current.previousElementSibling?.classList.add('border-r-0');
