@@ -97,7 +97,7 @@ export default function Index() {
         return () => {
             document.removeEventListener('click', handleCloseMenu as EventListener);
         };
-    });
+    }, []);
 
     const handleOpenOptions = () => {
         setOpenOptions(!openOptions);
