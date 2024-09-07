@@ -21,6 +21,7 @@ const customStyles = {
     input: (provided: any) => ({
         ...provided,
         color: '#fff',
+        cursor: 'pointer',
     }),
     valueContainer: (provided: any) => ({
         ...provided,
@@ -84,7 +85,8 @@ const customStyles = {
     }),
     dropdownIndicator: (provided: any) => ({
         ...provided,
-        padding: '0', // Tùy chỉnh padding hoặc ẩn dropdown indicator
+        padding: '0',
+        cursor: 'pointer',
     }),
 };
 
@@ -128,6 +130,17 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
     const selectRef = React.useRef(null);
     const [toggleOpen, setToggleOpen] = React.useState(false);
 
+    React.useEffect(() => {
+        const handleCloseMenu = (e: MouseEvent) => {
+            if (!refEl.current?.contains(e.target as Node)) (selectRef.current as any).blur();
+        };
+        document.addEventListener('click', handleCloseMenu as EventListener);
+
+        return () => {
+            document.removeEventListener('click', handleCloseMenu as EventListener);
+        };
+    }, []);
+
     const handleToggleMenu = (type: string) => () => {
         if (openOptions) setOpenOptions(false);
         setToggleOpen(type === 'open' ? true : false);
@@ -140,11 +153,19 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
         }
     };
 
+    const handleClickItemSearch = () => {
+        if (selectRef.current) {
+            (selectRef.current as any).focus();
+            (selectRef.current as any).openMenu();
+        }
+    };
+
     return (
         <div
+            onClick={handleClickItemSearch}
             ref={refEl}
             className={clsx(
-                'px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0',
+                'px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0 cursor-pointer',
                 toggleOpen ? 'border !border-customColor-primary' : 'border-r border-r-[#666]',
             )}
         >
