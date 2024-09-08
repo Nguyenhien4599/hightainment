@@ -12,16 +12,20 @@
 
 @layer utilities {
     .scrollbar-custom {
-        scrollbar-width: thin; /* Dùng cho Firefox */
-        scrollbar-color: #444444; /* thumb và track cho Firefox */
+        scrollbar-width: thin;
+        /* Dùng cho Firefox */
+        scrollbar-color: #444444;
+        /* thumb và track cho Firefox */
     }
 
     .scrollbar-custom::-webkit-scrollbar {
-        width: 4px; /* Độ rộng của thanh cuộn */
+        width: 4px;
+        /* Độ rộng của thanh cuộn */
     }
 
     .scrollbar-custom::-webkit-scrollbar-thumb {
-        background-color: #444444; /* Màu của thumb */
+        background-color: #444444;
+        /* Màu của thumb */
         border-radius: 4px;
     }
 }
@@ -33,7 +37,7 @@
     top: 0;
 }
 
-.react-datepicker__input-container > input::placeholder {
+.react-datepicker__input-container>input::placeholder {
     color: #bbb;
     letter-spacing: -0.5px;
     font-size: 14px;

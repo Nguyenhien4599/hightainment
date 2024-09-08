@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 import DatePicker from 'react-datepicker';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/style.css';
 import React from 'react';
 
 import FilterSearchSelectItem from './FilterSearchSelectItem';
@@ -84,13 +86,28 @@ export default function Index() {
     const refEl = React.useRef<HTMLDivElement | null>(null);
     const optionsRef = React.useRef<HTMLDivElement | null>(null);
     const [openOptions, setOpenOptions] = React.useState(false);
+    const [startDate, setStartDate] = React.useState<Date | null>(null);
+    const [endDate, setEndDate] = React.useState<Date | null>(null);
+
+    const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(undefined);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const handleDayClick = (day: Date) => {
+        setSelectedDate(day);
+        setIsOpen(false); // Close the date picker when a date is selected
+    };
+
+    const handleInputClick = () => {
+        setIsOpen(!isOpen); // Toggle the visibility of the date picker
+    };
 
     React.useEffect(() => {
         const handleCloseMenu = (e: MouseEvent) => {
+            const target = e.target as Node;
             if (
-                !optionsRef.current?.contains(e.target as Node) &&
-                !refEl.current?.contains(e.target as Node) &&
-                openOptions
+                !optionsRef.current?.contains(target) &&
+                !refEl.current?.contains(target) &&
+                openOptions &&
+                !(target instanceof HTMLInputElement && target.closest('.react-datepicker'))
             ) {
                 setOpenOptions(false);
             }
@@ -107,6 +124,18 @@ export default function Index() {
     const handleOpenOptions = () => {
         setOpenOptions(!openOptions);
         if (refEl.current) refEl.current.previousElementSibling?.classList.add('border-r-0');
+    };
+
+    const handleChangeStartDate = (date: Date | null) => {
+        if (date) {
+            setStartDate(date);
+        }
+    };
+
+    const handleChangeEndDate = (date: Date | null) => {
+        if (date) {
+            setEndDate(date);
+        }
     };
 
     return (
@@ -183,16 +212,36 @@ export default function Index() {
                                 </button>
                             </div>
                             <div className="grid grid-cols-[1fr_12px_1fr] gap-x-3">
-                                <DatePicker
+                                {/* <DatePicker
+                                    selected={startDate}
+                                    onChange={handleChangeStartDate}
+                                    onBlur={(e) => e.stopPropagation()}
                                     placeholderText="Start date"
                                     className="w-full h-full rounded-lg bg-[#222] border border-[#434343] px-4 py-3 outline-none text-white text-base font-bold"
-                                />
+                                /> */}
+                                <div className="date-picker-wrapper">
+                                    <input
+                                        type="text"
+                                        value={selectedDate ? selectedDate.toDateString() : ''}
+                                        onClick={handleInputClick}
+                                        readOnly
+                                        placeholder="Select a date"
+                                    />
+                                    {isOpen && (
+                                        <div className="date-picker-popup absolute">
+                                            <DayPicker selected={selectedDate} onDayClick={handleDayClick} />
+                                        </div>
+                                    )}
+                                </div>
 
                                 <span className="text-xl font-normal text-[#BBB] leading-none tracking-[-0.5px] self-center">
                                     ~
                                 </span>
 
                                 <DatePicker
+                                    selected={endDate}
+                                    onChange={handleChangeEndDate}
+                                    onBlur={(e) => e.stopPropagation()}
                                     placeholderText="End date"
                                     className="w-full h-full rounded-lg bg-[#222] border border-[#434343] px-4 py-3 outline-none text-white text-base font-bold"
                                 />
