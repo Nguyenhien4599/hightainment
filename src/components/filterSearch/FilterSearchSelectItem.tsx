@@ -120,7 +120,7 @@ const options = [
 
 interface Props {
     placeholderText: string;
-    svgTag: React.ReactNode;
+    svgTag: string;
     openOptions: boolean;
     setOpenOptions: Function;
 }
@@ -169,7 +169,7 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
                 toggleOpen ? 'border !border-customColor-primary' : 'border-r border-r-[#666]',
             )}
         >
-            <span>{svgTag}</span>
+            <img src={svgTag} alt="icon" />
             <Select
                 ref={selectRef}
                 isMulti

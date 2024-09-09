@@ -1,4 +1,4 @@
-import { listText } from '@/const/listTextSideBar';
+import { listSidebar } from '@/const/list';
 import Item from './Item';
 
 export default function Index() {
@@ -7,7 +7,7 @@ export default function Index() {
             <h2 className="font-bold text-lg leading-none text-customColor-primary py-2">My Auras</h2>
             <nav className="mt-6 h-[464px] overflow-y-scroll pe-3 scrollbar-custom">
                 <ul>
-                    {listText.map((text, index) => (
+                    {listSidebar.map((text, index) => (
                         <Item title={text} key={index} />
                     ))}
                 </ul>

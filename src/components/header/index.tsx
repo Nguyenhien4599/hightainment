@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import logo from '@/assets/images/5f5356c6bf7ad09a4bc9223cf055cfcc.png';
 import avatar from '@/assets/images/avatar.jpeg';
+import iconHeader1 from '@/assets/images/iconHeader1.svg';
+import iconHeader2 from '@/assets/images/iconHeader2.svg';
 
 export default function Index() {
     const [openDropdown, setOpenDropdown] = React.useState(false);
@@ -17,15 +19,7 @@ export default function Index() {
             <div className="bg-customColor-bgSideBar relative sm-md:bg-customColor-bg sm-md:py-2 sm-md:px-4 py-6 px-[72px] w-full flex justify-end items-center">
                 <form className="flex py-2 px-4 me-9 border-b border-b-[#666] sm-md:hidden">
                     <button className="me-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M18.8511 14.6085C20.4492 11.2632 19.8628 7.13498 17.0919 4.36407C13.5772 0.849348 7.87868 0.849348 4.36396 4.36407C0.849242 7.87879 0.849242 13.5773 4.36396 17.092C7.87868 20.6067 13.5772 20.6067 17.0919 17.092L20.6274 20.6275"
-                                stroke="#EFA1BB"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
+                        <img src={iconHeader1} alt="icon" />
                     </button>
                     <input
                         type="text"
@@ -40,14 +34,9 @@ export default function Index() {
                 >
                     Calvin Klein
                 </p>
-                <span onClick={toggleDropdown} className="sm-md:hidden cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
-                        <path
-                            d="M8.27611 11.5448C7.87592 12.0373 7.12408 12.0373 6.72389 11.5448L2.32486 6.13059C1.79387 5.47708 2.25894 4.5 3.10097 4.5H11.899C12.7411 4.5 13.2061 5.47708 12.6751 6.13059L8.27611 11.5448Z"
-                            fill="#EAEAEA"
-                        />
-                    </svg>
-                </span>
+
+                <img onClick={toggleDropdown} className="sm-md:hidden cursor-pointer" src={iconHeader2} alt="icon" />
+
                 {openDropdown && (
                     <div className="absolute right-2 z-10 w-[166px] mt-2 top-[52%] bg-[#333] divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <div className="py-1" role="none">
@@ -68,17 +57,7 @@ export default function Index() {
                 )}
 
                 <button className="hidden sm-md:flex sm-md:items-center sm-md:gap-2 py-2 px-4 outline-none border border-customColor-primary w-full rounded-lg">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M18.8511 14.6084C20.4492 11.263 19.8628 7.13485 17.0919 4.36394C13.5772 0.849226 7.87868 0.849226 4.36396 4.36394C0.849242 7.87866 0.849242 13.5771 4.36396 17.0919C7.87868 20.6066 13.5772 20.6066 17.0919 17.0919L20.6274 20.6274"
-                                stroke="#EFA1BB"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                    </span>
+                    <img src={iconHeader1} alt="icon" />
                     <span className="text-xl leading-none text-[#999] font-bold">Search</span>
                 </button>
             </div>

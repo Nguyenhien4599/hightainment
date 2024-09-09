@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
-import 'react-datepicker/dist/react-datepicker.css';
+import 'react-day-picker/style.css';
 
 import './index.css';
 import router from './routers';

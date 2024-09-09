@@ -1,6 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 
+import iconModalBottomToTop from '@/assets/images/iconModalBottomToTop.svg';
+
 interface Props {
     title: string;
     children: React.ReactNode;
@@ -22,22 +24,7 @@ export default function index({ title, children, isOpen, closeModal }: Props) {
             <div className="flex justify-between mb-[25px] px-6">
                 <h2 className="text-white text-2xl leading-4 font-medium">{title}</h2>
                 <span onClick={handleClose}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <g clipPath="url(#clip0_114_7017)">
-                            <path
-                                d="M1.25 18.75L18.75 1.25M18.75 18.75L1.25 1.25"
-                                stroke="white"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_114_7017">
-                                <rect width="20" height="20" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
+                    <img src={iconModalBottomToTop} alt="icon" />
                 </span>
             </div>
             <nav className="ps-6 pe-3">
