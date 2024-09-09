@@ -5,11 +5,14 @@ import logo from '@/assets/images/5f5356c6bf7ad09a4bc9223cf055cfcc.png';
 import avatar from '@/assets/images/avatar.jpeg';
 import iconHeader1 from '@/assets/images/iconHeader1.svg';
 import iconHeader2 from '@/assets/images/iconHeader2.svg';
+import ModalFilterSearchMobile from '@/components/modalFIlterSearchMobile';
 
 export default function Index() {
     const [openDropdown, setOpenDropdown] = React.useState(false);
+    const [isOpen, setIsOpen] = React.useState(false);
 
     const toggleDropdown = () => setOpenDropdown(!openDropdown);
+    const toggleModal = () => setIsOpen(!isOpen);
 
     return (
         <header className="flex w-full sm-md:flex-wrap">
@@ -56,11 +59,15 @@ export default function Index() {
                     </div>
                 )}
 
-                <button className="hidden sm-md:flex sm-md:items-center sm-md:gap-2 py-2 px-4 outline-none border border-customColor-primary w-full rounded-lg">
+                <button
+                    className="hidden sm-md:flex sm-md:items-center sm-md:gap-2 py-2 px-4 outline-none border border-customColor-primary w-full rounded-lg"
+                    onClick={toggleModal}
+                >
                     <img src={iconHeader1} alt="icon" />
                     <span className="text-xl leading-none text-[#999] font-bold">Search</span>
                 </button>
             </div>
+            <ModalFilterSearchMobile isOpen={isOpen} closeModal={setIsOpen} />
         </header>
     );
 }
