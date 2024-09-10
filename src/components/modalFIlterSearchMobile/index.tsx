@@ -19,7 +19,7 @@ export default function Index({ isOpen, closeModal }: Props) {
     return (
         <section
             className={clsx(
-                'fixed bottom-0 z-20 w-full bg-customColor-bg px-6 pt-3 pb-[38px] transition-all duration-[860ms]',
+                'fixed bottom-0 z-20 w-full bg-customColor-bg px-6 pt-3 pb-[38px] transition-all duration-[860ms] overflow-auto',
                 isOpen ? 'top-0' : 'top-[1000px]',
             )}
         >
@@ -39,7 +39,7 @@ export default function Index({ isOpen, closeModal }: Props) {
                     className="w-full bg-transparent outline-none border-none text-[#999] text-xl leading-none font-bold"
                 />
             </form>
-            {/* <FilterSearch /> */}
+            <FilterSearch />
         </section>
     );
 }

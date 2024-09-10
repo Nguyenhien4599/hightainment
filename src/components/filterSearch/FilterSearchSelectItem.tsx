@@ -30,13 +30,14 @@ const customStyles = {
     }),
     menu: (provided: any, state: any) => ({
         ...provided,
-        width: '280px', // Chiều rộng của menu
+        width: window.innerWidth < 768 ? 'auto' : '280px',
         left: '-53px',
+        right: '-17px',
         top: '89%',
         backgroundColor: '#111',
         border: '1px solid #EFA1BB',
         borderRadius: '0',
-        padding: '24px 28px 12px 28px',
+        padding: window.innerWidth < 768 ? '24px 18px' : '24px 28px 12px 28px',
     }),
     menuList: (provided: any) => ({
         ...provided,
@@ -126,6 +127,7 @@ interface Props {
 }
 
 export default function FilterSearchSelectItem({ placeholderText, svgTag, openOptions, setOpenOptions }: Props) {
+    const wrapItemRef = React.useRef<HTMLDivElement | null>(null);
     const refEl = React.useRef<HTMLDivElement | null>(null);
     const selectRef = React.useRef(null);
     const [toggleOpen, setToggleOpen] = React.useState(false);
@@ -140,6 +142,11 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
             document.removeEventListener('click', handleCloseMenu as EventListener);
         };
     }, []);
+
+    React.useEffect(() => {
+        if (window.matchMedia('(max-width: 768px)').matches && toggleOpen)
+            wrapItemRef.current && wrapItemRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, [toggleOpen]);
 
     const handleToggleMenu = (type: string) => () => {
         if (openOptions) setOpenOptions(false);
@@ -161,29 +168,33 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
     };
 
     return (
-        <div
-            onClick={handleClickItemSearch}
-            ref={refEl}
-            className={clsx(
-                'px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0 cursor-pointer',
-                toggleOpen ? 'border !border-customColor-primary' : 'border-r border-r-[#666]',
-            )}
-        >
-            <img src={svgTag} alt="icon" />
-            <Select
-                ref={selectRef}
-                isMulti
-                options={options}
-                styles={customStyles}
-                onMenuOpen={handleToggleMenu('open')}
-                onMenuClose={handleToggleMenu('close')}
-                className="flex-1 h-full"
-                placeholder={placeholderText}
-                components={{
-                    IndicatorSeparator: () => null,
-                    DropdownIndicator: CustomDropdownIndicator,
-                }}
-            />
+        <div ref={wrapItemRef} className={clsx(toggleOpen ? 'sm-md:h-[320px]' : '')}>
+            <div
+                onClick={handleClickItemSearch}
+                ref={refEl}
+                className={clsx(
+                    'px-4 w-[280px] h-full flex justify-center items-center gap-3 bg-[#333] border-b-0 cursor-pointer sm-md:w-full sm-md:rounded-[5px] sm-md:h-[82px]',
+                    toggleOpen
+                        ? 'border !border-customColor-primary sm-md:rounded-b-none'
+                        : 'border-r border-r-[#666] sm-md:border-r-transparent',
+                )}
+            >
+                <img src={svgTag} alt="icon" />
+                <Select
+                    ref={selectRef}
+                    isMulti
+                    options={options}
+                    styles={customStyles}
+                    onMenuOpen={handleToggleMenu('open')}
+                    onMenuClose={handleToggleMenu('close')}
+                    className="flex-1 h-full"
+                    placeholder={placeholderText}
+                    components={{
+                        IndicatorSeparator: () => null,
+                        DropdownIndicator: CustomDropdownIndicator,
+                    }}
+                />
+            </div>
         </div>
     );
 }

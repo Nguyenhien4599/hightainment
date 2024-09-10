@@ -13,3 +13,9 @@
     letter-spacing: -0.5px;
     color: #bbb;
 }
+
+@media (min-width: 360px) and (max-width: 767px) {
+    .custom-item-filter-search::after {
+        display: none;
+    }
+}

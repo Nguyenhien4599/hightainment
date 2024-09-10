@@ -6,6 +6,8 @@ import moment from 'moment';
 import FilterSearchSelectItem from './FilterSearchSelectItem';
 import Button from './Button';
 import { listBtnFilterDate, listBtnFilterMovie, listFilter } from '@/const/list';
+import iconSearch from '@/assets/images/icon4.svg';
+import iconAdd from '@/assets/images/icon5.svg';
 import styles from './styles.module.css';
 
 export default function Index() {
@@ -21,6 +23,8 @@ export default function Index() {
     const [isActiveMovie, setActiveMovie] = React.useState<number | null>(null);
 
     React.useEffect(() => {
+        if (openOptions && refEl.current && window.matchMedia('(max-width: 768px)').matches)
+            refEl.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         const handleCloseMenu = (e: MouseEvent) => {
             const target = e.target as Node;
             if (!optionsRef.current?.contains(target) && !refEl.current?.contains(target) && openOptions) {
@@ -65,17 +69,11 @@ export default function Index() {
     };
 
     return (
-        <section className="flex gap-6">
-            <div className="flex relative">
-                <button className="w-[71px] h-[72px] flex justify-center items-center bg-customColor-primary cursor-pointer rounded-tl-lg rounded-bl-lg">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="37" height="36" viewBox="0 0 37 36" fill="none">
-                            <path
-                                d="M3.50001 18C3.50001 26.2845 10.2155 33 18.5 33C26.7845 33 33.5 26.2845 33.5 18C33.5 9.88314 27.0535 3.27242 19.001 3.00821C18.725 2.99915 18.5 3.22386 18.5 3.5V5.50004C18.5 5.77617 18.724 5.99893 18.9999 6.01045C21.6431 6.1208 24.1813 7.10224 26.2146 8.80924C28.3759 10.6236 29.8286 13.1416 30.3176 15.9207C30.8065 18.6999 30.3004 21.5625 28.8882 24.0055C27.4759 26.4486 25.2479 28.3158 22.5956 29.2791C19.9432 30.2424 17.0362 30.2402 14.3854 29.2729C11.7345 28.3055 9.50934 26.4349 8.10083 23.9897C6.69232 21.5445 6.19058 18.6812 6.68376 15.9027C7.15023 13.2748 8.47858 10.8818 10.4522 9.09782C10.6444 8.92414 10.9379 8.93791 11.1211 9.12105L13.1465 11.1464C13.4614 11.4614 14 11.2383 14 10.7929V3.5C14 3.22386 13.7761 3 13.5 3H6.20676C5.76136 3 5.53826 3.53847 5.85314 3.85348L8.28934 6.29068C8.49449 6.49592 8.48184 6.83159 8.26945 7.02932C6.83044 8.36901 5.66808 9.98035 4.85053 11.7723C3.95861 13.7272 3.498 15.8512 3.50001 18Z"
-                                fill="white"
-                            />
-                        </svg>
-                    </span>
+        <section className="flex gap-6 sm-md:flex-col">
+            <div className="flex relative sm-md:flex-col sm-md:gap-6">
+                <button className="w-[71px] h-[72px] flex justify-center items-center bg-customColor-primary cursor-pointer rounded-tl-lg rounded-bl-lg sm-md:ms-auto sm-md:w-[103px] sm-md:h-[32px] sm-md:rounded-[52px] sm-md:justify-between sm-md:px-3">
+                    <img src={iconSearch} alt="icon" className="sm-md:w-6 sm-md:h-6" />
+                    <span className="hidden sm-md:block text-[#EAEAEA] font-bold text-[15px]">Reset</span>
                 </button>
                 {listFilter.map((f, i) => (
                     <FilterSearchSelectItem
@@ -89,24 +87,14 @@ export default function Index() {
 
                 <div
                     className={clsx(
-                        'relative cursor-pointer px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0 rounded-tr-lg rounded-br-lg',
+                        'relative cursor-pointer px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0 rounded-tr-lg rounded-br-lg sm-md:w-full sm-md:rounded-[5px] sm-md:h-[82px]',
                         openOptions &&
-                            `${styles['custom-item-filter-search']} rounded-br-none border !border-customColor-primary`,
+                            `${styles['custom-item-filter-search']} rounded-br-none border !border-customColor-primary sm-md:rounded-b-none`,
                     )}
                     onClick={handleOpenOptions}
                     ref={refEl}
                 >
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M5 12H19M12 19V5"
-                                stroke="#EFA1BB"
-                                strokeWidth="3"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                    </span>
+                    <img src={iconAdd} alt="icon" />
                     <p className="w-full text-[#999] text-xl font-bold leading-none">Addtional</p>
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -124,8 +112,8 @@ export default function Index() {
                         className="w-full absolute top-full p-6 bg-[#333] border border-customColor-primary"
                     >
                         <section>
-                            <h2 className="text-white text-2xl leading-5 font-bold mb-6">Date</h2>
-                            <div className="grid grid-cols-[1fr_1fr_1fr] grid-rows-[46px_46px] gap-x-[14px] gap-y-[17px] mb-6">
+                            <h2 className="text-white text-2xl leading-5 font-bold mb-6 sm-md:mb-4">Date</h2>
+                            <div className="grid grid-cols-[1fr_1fr_1fr] grid-rows-[46px_46px] gap-x-[14px] gap-y-[17px] mb-6 sm-md:grid-cols-[1fr] sm-md:grid-rows-[repeat(6,46px)] sm-md:gap-3 sm-md:mb-4">
                                 {listBtnFilterDate.map((t, i) => (
                                     <Button
                                         key={i}
@@ -137,7 +125,7 @@ export default function Index() {
                                     </Button>
                                 ))}
                             </div>
-                            <div className="grid grid-cols-[1fr_12px_1fr] gap-x-3">
+                            <div className="grid grid-cols-[1fr_12px_1fr] gap-x-3 sm-md:gap-x-1">
                                 <div ref={dayPickerStartRef} onBlur={handleBlurDatepickerStart}>
                                     <input
                                         type="text"
@@ -151,7 +139,7 @@ export default function Index() {
                                         )}
                                     />
                                     {isOpen === 'start' && (
-                                        <div className="absolute bg-[#222] text-white p-2 rounded-lg">
+                                        <div className="absolute bg-[#222] text-white p-2 rounded-lg sm-md:left-0">
                                             <DayPicker
                                                 mode="single"
                                                 selected={startDate as Date}
@@ -183,7 +171,7 @@ export default function Index() {
                                         )}
                                     />
                                     {isOpen === 'end' && (
-                                        <div className="absolute bg-[#222] text-white p-2 rounded-lg">
+                                        <div className="absolute bg-[#222] text-white p-2 rounded-lg sm-md:left-0">
                                             <DayPicker
                                                 mode="single"
                                                 selected={endDate as Date}
@@ -201,7 +189,7 @@ export default function Index() {
                         </section>
                         <section className="mt-6">
                             <h2 className="text-white font-bold text-2xl leading-5 ">Movie / TV Show</h2>
-                            <div className="mt-6 grid grid-cols-[1fr_1fr] gap-x-[14px]">
+                            <div className="mt-6 grid grid-cols-[1fr_1fr] gap-x-[14px] sm-md:grid-cols-[1fr] sm-md:gap-y-6">
                                 {listBtnFilterMovie.map((t, i) => (
                                     <Button
                                         key={i}
@@ -219,9 +207,12 @@ export default function Index() {
                     </div>
                 )}
             </div>
-            <div>
-                <button className="h-full w-[176px] bg-[#666] text-customColor-primary border border-customColor-primary cursor-pointer text-xl font-bold rounded-lg">
+            <div className="sm-md:grid sm-md:grid-cols-[1fr_1fr] sm-md:grid-rows-[48px] sm-md:gap-3">
+                <button className="h-full w-[176px] bg-[#666] text-customColor-primary border border-customColor-primary cursor-pointer text-xl leading-none font-bold rounded-lg sm-md:w-full">
                     Save Aura
+                </button>
+                <button className=" hidden h-full w-full text-white bg-customColor-primary cursor-pointer text-xl leading-none font-bold rounded-lg sm-md:block">
+                    Search Aura
                 </button>
             </div>
         </section>
