@@ -17,7 +17,7 @@ export default function Index({ children }: Props) {
                 <aside className="sm-md:hidden bg-customColor-bgSideBar">
                     <SideBar />
                 </aside>
-                <main className="pt-[60px] ps-[72px]">{children}</main>
+                <main className="pt-[60px] ps-[72px] container">{children}</main>
                 <Footer />
             </section>
             <NavigationBottom />
