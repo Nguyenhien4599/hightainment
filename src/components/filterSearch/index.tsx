@@ -109,7 +109,7 @@ export default function Index() {
                 {openOptions && (
                     <div
                         ref={optionsRef}
-                        className="w-full absolute top-full p-6 bg-[#333] border border-customColor-primary"
+                        className="w-full absolute top-full p-6 bg-[#333] border border-customColor-primary z-10"
                     >
                         <section>
                             <h2 className="text-white text-2xl leading-5 font-bold mb-6 sm-md:mb-4">Date</h2>

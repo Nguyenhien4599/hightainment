@@ -8,8 +8,12 @@ export default function Index() {
                 <FilterSearch />
             </section>
 
-            <section className="mt-14">
+            <section className="mt-14 sm-md:mt-0">
                 <Carousel title={'Movie'} />
+            </section>
+
+            <section className="mt-14">
+                <Carousel title={'TV Show'} />
             </section>
         </>
     );

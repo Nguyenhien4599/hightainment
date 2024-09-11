@@ -9,7 +9,7 @@ interface Props {
 
 export default function Item({ title, img }: Props) {
     return (
-        <div className="grid grid-cols-[301px] grid-rows-[538px_1fr] gap-y-[19px]">
+        <div className="grid grid-cols-[301px] grid-rows-[538px_1fr] gap-y-[19px] sm-md:grid-cols-[127px] sm-md:grid-rows-[298px_1fr]">
             <img src={img} alt="img" className="rounded-[20px] h-full object-cover" />
             <div>
                 <p className="text-customColor-primary text-base leading-none font-medium">{title}</p>

@@ -10,6 +10,7 @@ import icon3 from '@/assets/images/iconNavBottom3.svg';
 
 export default function Index() {
     const [isOpenState, setIsOpen] = React.useState(false);
+    const [isActiveMobile, setIsActiveMobile] = React.useState<number | null>(null);
 
     const handleCLick = () => {
         setIsOpen(!isOpenState);
@@ -44,7 +45,13 @@ export default function Index() {
             </section>
             <ModalBottomToTop title={'My Auras'} isOpen={isOpenState} closeModal={setIsOpen}>
                 {listSidebar.map((text, index) => (
-                    <Item title={text} key={index} />
+                    <Item
+                        title={text}
+                        key={index}
+                        indexItem={index}
+                        isActiveMobile={index === isActiveMobile}
+                        setIsActiveMobile={setIsActiveMobile}
+                    />
                 ))}
             </ModalBottomToTop>
         </>

@@ -17,8 +17,8 @@ export default function index({ title, children, isOpen, closeModal }: Props) {
     return (
         <section
             className={clsx(
-                'hidden sm-md:block bg-[#222] py-3 rounded-t-lg fixed w-full transition-all duration-[860ms]',
-                isOpen ? 'bottom-[79px]' : 'bottom-[-1000px]',
+                'hidden z-10 sm-md:block bg-[#222] py-3 rounded-t-lg fixed w-full transition-all duration-[860ms]',
+                isOpen ? 'bottom-[78px]' : 'bottom-[-1000px]',
             )}
         >
             <div className="flex justify-between mb-[25px] px-6">

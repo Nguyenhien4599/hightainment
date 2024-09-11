@@ -37,6 +37,7 @@ const customStyles = {
         backgroundColor: '#111',
         border: '1px solid #EFA1BB',
         borderRadius: '0',
+        zIndex: '10',
         padding: window.innerWidth < 768 ? '24px 18px' : '24px 28px 12px 28px',
     }),
     menuList: (provided: any) => ({
