@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply font-sans leading-main bg-customColor-bg;
+        @apply font-sans leading-main bg-customColor-bg overflow-x-clip max-h-dvh;
     }
 }
 

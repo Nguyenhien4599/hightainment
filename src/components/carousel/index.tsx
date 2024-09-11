@@ -1,3 +1,4 @@
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import clsx from 'clsx';
@@ -76,8 +77,6 @@ export default function Index({ title }: Props) {
             </div>
             <Swiper
                 modules={[Navigation]}
-                spaceBetween={30}
-                slidesPerView={4.5}
                 onSlideChange={() => console.log('slide change')}
                 navigation={{
                     nextEl: `.custom-next-${title.replaceAll(' ', '')}`,
@@ -89,6 +88,10 @@ export default function Index({ title }: Props) {
                         spaceBetween: 24,
                     },
                     768: {},
+                    1024: {
+                        slidesPerView: 4.5,
+                        spaceBetween: 30,
+                    },
                 }}
             >
                 {data.map((c, i) => (
