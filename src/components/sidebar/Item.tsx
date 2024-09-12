@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
@@ -12,15 +13,22 @@ interface Props {
 }
 
 export default function Item({ title, isActiveMobile, setIsActiveMobile, indexItem }: Props) {
+    const [openDropdown, setOpenDropdown] = React.useState(false);
+
     const handleClick = () => {
         setIsActiveMobile && setIsActiveMobile(indexItem);
+    };
+
+    const handleClickOpenDropdown = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        setOpenDropdown(!openDropdown);
     };
 
     return (
         <li
             onClick={handleClick}
             className={clsx(
-                'py-2 ps-2 pe-4 grid grid-cols-[42px_1fr_3px] gap-2 lg:hover:bg-[#333] sm-md:grid-cols-[1fr_3px] sm-md:bg-[#666] sm-md:mb-4 sm-md:rounded-lg sm-md:p-2 hover:rounded-lg',
+                'relative py-2 ps-2 pe-4 grid grid-cols-[42px_1fr_3px] gap-2 lg:hover:bg-[#333] sm-md:grid-cols-[1fr_3px] sm-md:bg-[#666] sm-md:mb-4 sm-md:rounded-lg sm-md:p-2 hover:rounded-lg',
                 isActiveMobile ? 'sm-md:bg-[#999]' : '',
             )}
         >
@@ -30,9 +38,27 @@ export default function Item({ title, isActiveMobile, setIsActiveMobile, indexIt
             <Link className="text-lg leading-none text-white font-bold self-center" to="/">
                 {title}
             </Link>
-            <span className="self-center">
+            <span className="self-center cursor-pointer" onClick={handleClickOpenDropdown}>
                 <img src={iconSidebar2} alt="icon" />
             </span>
+            {openDropdown && (
+                <div className="absolute right-0 z-10 w-[166px] mt-2 top-[88%] bg-[#333] divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1" role="none">
+                        <Link
+                            className="block px-4 py-2 text-lg leading-none font-medium text-[#D8D8D8] hover:bg-[#535353]"
+                            to="/"
+                        >
+                            Edit
+                        </Link>
+                        <Link
+                            className="block px-4 py-2 text-lg leading-none font-medium text-[#D8D8D8] hover:bg-[#535353]"
+                            to="/"
+                        >
+                            Delete
+                        </Link>
+                    </div>
+                </div>
+            )}
         </li>
     );
 }

@@ -17,7 +17,9 @@
         scrollbar-color: #444444;
         /* thumb và track cho Firefox */
     }
-
+    .scrollbar-custom::-webkit-scrollbar-track {
+        background: transparent;
+    }
     .scrollbar-custom::-webkit-scrollbar {
         width: 4px;
         /* Độ rộng của thanh cuộn */
