@@ -51,7 +51,7 @@ export default function Index() {
                             </Link>
                             <Link
                                 className="block px-4 py-2 text-lg leading-none font-medium text-[#D8D8D8] hover:bg-[#535353]"
-                                to="/"
+                                to="/login"
                             >
                                 LogOut
                             </Link>
