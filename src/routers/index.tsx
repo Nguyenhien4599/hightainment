@@ -5,6 +5,7 @@ import PrivateRoute from './privateRoute';
 
 const Layout = React.lazy(() => import('@/layout'));
 const Home = React.lazy(() => import('@/pages/Home'));
+const Login = React.lazy(() => import('@/pages/Login'));
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: '/payment',
         element: <PrivateRoute element={<div>Test</div>} />,
+    },
+    {
+        path: '/login',
+        element: <Login />,
     },
 ]);
 
