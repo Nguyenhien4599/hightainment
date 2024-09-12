@@ -9,11 +9,12 @@ import icon2 from '@/assets/images/iconNavBottom2.svg';
 import icon3 from '@/assets/images/iconNavBottom3.svg';
 
 export default function Index() {
-    const [isOpenState, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpenDropdown, setIsOpenDropdown] = React.useState<number | null>(null);
     const [isActiveMobile, setIsActiveMobile] = React.useState<number | null>(null);
 
     const handleCLick = () => {
-        setIsOpen(!isOpenState);
+        setIsOpen(!isOpen);
     };
 
     return (
@@ -43,7 +44,7 @@ export default function Index() {
                     </Link>
                 </nav>
             </section>
-            <ModalBottomToTop title={'My Auras'} isOpen={isOpenState} closeModal={setIsOpen}>
+            <ModalBottomToTop title={'My Auras'} isOpen={isOpen} closeModal={setIsOpen}>
                 {listSidebar.map((text, index) => (
                     <Item
                         title={text}
@@ -51,6 +52,8 @@ export default function Index() {
                         indexItem={index}
                         isActiveMobile={index === isActiveMobile}
                         setIsActiveMobile={setIsActiveMobile}
+                        isOpenDropdown={isOpenDropdown === index}
+                        setIsOpen={() => setIsOpenDropdown(index)}
                     />
                 ))}
             </ModalBottomToTop>

@@ -10,18 +10,20 @@ interface Props {
     isActiveMobile?: boolean;
     setIsActiveMobile?: Function;
     indexItem?: number;
+    isOpenDropdown?: boolean;
+    setIsOpen?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function Item({ title, isActiveMobile, setIsActiveMobile, indexItem }: Props) {
-    const [openDropdown, setOpenDropdown] = React.useState(false);
-
+export default function Item({
+    title,
+    isActiveMobile,
+    setIsActiveMobile,
+    indexItem,
+    isOpenDropdown,
+    setIsOpen,
+}: Props) {
     const handleClick = () => {
         setIsActiveMobile && setIsActiveMobile(indexItem);
-    };
-
-    const handleClickOpenDropdown = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation();
-        setOpenDropdown(!openDropdown);
     };
 
     return (
@@ -38,10 +40,10 @@ export default function Item({ title, isActiveMobile, setIsActiveMobile, indexIt
             <Link className="text-lg leading-none text-white font-bold self-center" to="/">
                 {title}
             </Link>
-            <span className="self-center cursor-pointer" onClick={handleClickOpenDropdown}>
+            <span className="self-center cursor-pointer" onClick={setIsOpen}>
                 <img src={iconSidebar2} alt="icon" />
             </span>
-            {openDropdown && (
+            {isOpenDropdown && (
                 <div className="absolute right-0 z-10 w-[166px] mt-2 top-[88%] bg-[#333] divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1" role="none">
                         <Link
