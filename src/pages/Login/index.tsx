@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '@/assets/images/5f5356c6bf7ad09a4bc9223cf055cfcc.png';
@@ -9,8 +8,8 @@ import icon3 from '@/assets/images/iconSocial3.svg';
 export default function Index() {
     return (
         <section className="flex justify-center items-center flex-col">
-            <div className="w-[400px]">
-                <img src={logo} alt="logo" className="mx-auto mt-[86px] mb-[60px]" />
+            <div className="w-[400px] sm-md:px-3 sm-md:w-full">
+                <img src={logo} alt="logo" className="mx-auto mt-[86px] mb-[60px] sm-md:mt-[30px]" />
                 <div className="mb-[68px]">
                     <form>
                         <div className="mb-4 rounded-lg overflow-hidden">
@@ -66,7 +65,7 @@ export default function Index() {
                         </div>
                     </form>
                 </div>
-                <div>
+                <div className="sm-md:pb-6">
                     <nav className="mb-[22px] grid grid-cols-3">
                         <Link to="/" className="text-[#999] text-xs leading-4 font-medium text-center">
                             Privacy Policy
