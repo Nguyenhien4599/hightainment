@@ -135,7 +135,7 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
 
     React.useEffect(() => {
         const handleCloseMenu = (e: MouseEvent) => {
-            if (!refEl.current?.contains(e.target as Node)) (selectRef.current as any).blur();
+            if (!refEl.current?.contains(e.target as Node) && selectRef.current) (selectRef.current as any).blur();
         };
         document.addEventListener('click', handleCloseMenu as EventListener);
 
