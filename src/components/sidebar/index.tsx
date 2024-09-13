@@ -5,6 +5,9 @@ import Item from './Item';
 
 export default function Index() {
     const [isOpen, setIsOpen] = React.useState<number | null>(null);
+    const handleToggleOpen = (number: number) => () => {
+        setIsOpen(isOpen === number ? null : number);
+    };
     return (
         <>
             <h2 className="mt-[71px] font-bold text-lg leading-none text-customColor-primary py-2">My Auras</h2>
@@ -15,7 +18,8 @@ export default function Index() {
                             title={text}
                             key={index}
                             isOpenDropdown={isOpen === index}
-                            setIsOpen={() => setIsOpen(index)}
+                            indexItem={index}
+                            setIsOpen={handleToggleOpen}
                         />
                     ))}
                 </ul>

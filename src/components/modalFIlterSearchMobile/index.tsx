@@ -20,7 +20,7 @@ export default function Index({ isOpen, closeModal }: Props) {
         <section
             className={clsx(
                 'fixed bottom-0 z-20 w-full bg-customColor-bg px-6 pt-3 pb-[38px] transition-all duration-[860ms] overflow-auto',
-                isOpen ? 'top-0' : 'top-[1000px]',
+                isOpen ? 'top-0' : 'top-[2000px]',
             )}
         >
             <span className="inline-block mb-5" onClick={handleCloseModal}>

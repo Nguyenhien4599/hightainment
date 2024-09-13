@@ -87,7 +87,10 @@ export default function Index({ title }: Props) {
                         slidesPerView: 2.5,
                         spaceBetween: 24,
                     },
-                    768: {},
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
                     1024: {
                         slidesPerView: 4.5,
                         spaceBetween: 30,
@@ -95,7 +98,7 @@ export default function Index({ title }: Props) {
                 }}
             >
                 {data.map((c, i) => (
-                    <SwiperSlide className="sm-md:!w-[127px]" key={i}>
+                    <SwiperSlide className="sm-md:!w-[127px] md-lg:!w-[205px]" key={i}>
                         <Item title={c.title} img={c.img} />
                     </SwiperSlide>
                 ))}

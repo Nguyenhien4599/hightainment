@@ -16,10 +16,13 @@ export default function Index() {
     const handleCLick = () => {
         setIsOpen(!isOpen);
     };
+    const handleToggleOpen = (number: number) => () => {
+        setIsOpenDropdown(isOpenDropdown === number ? null : number);
+    };
 
     return (
         <>
-            <section className="hidden fixed bottom-0 z-10 w-full bg-[#222] py-4 sm-md:block">
+            <section className="hidden fixed bottom-0 z-10 w-full bg-[#222] py-4 sm-md:block md-lg:block">
                 <nav className="grid grid-cols-[1fr_1fr_1fr]">
                     <Link to="/" className="flex flex-col justify-center items-center">
                         <span>
@@ -53,7 +56,7 @@ export default function Index() {
                         isActiveMobile={index === isActiveMobile}
                         setIsActiveMobile={setIsActiveMobile}
                         isOpenDropdown={isOpenDropdown === index}
-                        setIsOpen={() => setIsOpenDropdown(index)}
+                        setIsOpen={handleToggleOpen}
                     />
                 ))}
             </ModalBottomToTop>

@@ -30,7 +30,7 @@ const customStyles = {
     }),
     menu: (provided: any, state: any) => ({
         ...provided,
-        width: window.innerWidth < 768 ? 'auto' : '280px',
+        width: window.innerWidth < 1025 ? 'auto' : '280px',
         left: '-53px',
         right: '-17px',
         top: '89%',

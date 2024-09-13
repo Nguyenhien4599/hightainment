@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
@@ -9,9 +8,9 @@ interface Props {
     title: string;
     isActiveMobile?: boolean;
     setIsActiveMobile?: Function;
-    indexItem?: number;
+    indexItem: number;
     isOpenDropdown?: boolean;
-    setIsOpen?: React.MouseEventHandler<HTMLButtonElement>;
+    setIsOpen: Function;
 }
 
 export default function Item({
@@ -40,7 +39,7 @@ export default function Item({
             <Link className="text-lg leading-none text-white font-bold self-center" to="/">
                 {title}
             </Link>
-            <span className="self-center cursor-pointer" onClick={setIsOpen}>
+            <span className="self-center cursor-pointer" onClick={setIsOpen(indexItem)}>
                 <img src={iconSidebar2} alt="icon" />
             </span>
             {isOpenDropdown && (

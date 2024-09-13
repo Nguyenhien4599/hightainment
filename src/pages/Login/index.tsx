@@ -65,7 +65,7 @@ export default function Index() {
                         </div>
                     </form>
                 </div>
-                <div className="sm-md:pb-6">
+                <footer className="sm-md:pb-6">
                     <nav className="mb-[22px] grid grid-cols-3">
                         <Link to="/" className="text-[#999] text-xs leading-4 font-medium text-center">
                             Privacy Policy
@@ -80,7 +80,7 @@ export default function Index() {
                     <p className="text-[#999] text-[13px] leading-4 font-normal font-appleFont text-center">
                         Hightainment © 2024. All rights reserved.
                     </p>
-                </div>
+                </footer>
             </div>
         </section>
     );
