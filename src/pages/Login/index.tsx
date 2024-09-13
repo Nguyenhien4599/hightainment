@@ -20,7 +20,7 @@ export default function Index() {
                             />
                             <input
                                 type="password"
-                                placeholder="password"
+                                placeholder="Password"
                                 className="w-full px-4 py-3 text-sm leading-none outline-none"
                             />
                         </div>
