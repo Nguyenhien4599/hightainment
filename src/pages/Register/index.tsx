@@ -4,8 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
-import { DayPicker } from 'react-day-picker';
-import moment from 'moment';
 
 import logo from '@/assets/images/5f5356c6bf7ad09a4bc9223cf055cfcc.png';
 import icon from '@/assets/images/c8.svg';
