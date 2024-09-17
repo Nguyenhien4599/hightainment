@@ -53,8 +53,6 @@ export default function Index() {
         console.log(data);
     };
 
-    console.log('err', errors);
-
     return (
         <section className="flex justify-center items-center flex-col">
             <div className="w-[400px] sm-md:px-3 sm-md:w-full">
