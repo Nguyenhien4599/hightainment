@@ -40,7 +40,8 @@
     top: 0;
 }
 
-.react-datepicker__input-container input::placeholder {
+.react-datepicker__input-container input::placeholder,
+.placeholder-custom::placeholder {
     font-size: 14px;
     font-weight: 400;
     letter-spacing: -0.4px;
@@ -55,4 +56,8 @@
 .react-datepicker__day--selected {
     background-color: #efa1bb; /* Nền của ngày đã chọn */
     color: white;
+}
+
+.react-datepicker-wrapper {
+    display: block !important;
 }

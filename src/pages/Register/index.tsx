@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 import logo from '@/assets/images/5f5356c6bf7ad09a4bc9223cf055cfcc.png';
 import icon from '@/assets/images/c8.svg';
@@ -26,6 +28,7 @@ export default function Index() {
     const {
         control,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schema),
@@ -39,32 +42,15 @@ export default function Index() {
         },
     });
 
-    const [dateOfBirthState, setDateOfBirthState] = React.useState<string | Date | undefined>(undefined);
-    const [isOpen, setIsOpen] = React.useState<boolean>(false);
+    const [dateOfBirthState, setDateOfBirthState] = React.useState<Date | null>(null);
+
+    const handleChangeDate = (val: Date | null) => {
+        setDateOfBirthState(val);
+        setValue('dateOfBirth', moment(val).format('DD/MM/YYYY'), { shouldValidate: true });
+    };
 
     const onSubmit = (data: any) => {
         console.log(data);
-    };
-
-    const handleInputDatePickerClick = () => {
-        setIsOpen(!isOpen);
-    };
-
-    // const handleSelectDate = (val: Date | undefined) => {
-    //     if (date) {
-    //         setValue('dateOfBirth', moment(val).format('YYYY-MM-DD'));
-    //         setDateOfBirthState(moment(val).format('YYYY-MM-DD'));
-    //     }
-    //     else {
-    //         setValue('dateOfBirth', '');
-    //         setDateOfBirthState();
-    //     }
-
-    //     setIsOpen(false);
-    // };
-
-    const handleDayClick = (day: Date) => {
-        setIsOpen(false);
     };
 
     console.log('err', errors);
@@ -107,32 +93,30 @@ export default function Index() {
                                         {...field}
                                         placeholder="First and last name (Required)"
                                         className={clsx(
-                                            'w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
+                                            'placeholder-custom w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
                                             errors.name ? 'border-red-400' : 'border-[#434343]',
                                         )}
                                     />
                                 )}
                             />
                         </div>
-                        <div className="mb-2 relative">
+                        <div className="mb-2">
                             <Controller
                                 name="dateOfBirth"
                                 control={control}
                                 render={({ field }) => (
-                                    <>
-                                        <input
-                                            type="date"
-                                            onClick={handleInputDatePickerClick}
-                                            id="dateOfBirth"
-                                            placeholder="Date of birth (Required)"
-                                            {...field}
-                                            value={dateOfBirthState ? dateOfBirthState.toString() : ''}
-                                            className={clsx(
-                                                'w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
-                                                errors.dateOfBirth ? 'border-red-400' : 'border-[#434343]',
-                                            )}
-                                        />
-                                    </>
+                                    <DatePicker
+                                        id="dateOfBirth"
+                                        {...field}
+                                        selected={dateOfBirthState}
+                                        placeholderText="Date of birth (Required)"
+                                        dateFormat="dd/MM/yyyy"
+                                        onChange={handleChangeDate}
+                                        className={clsx(
+                                            'w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
+                                            errors.dateOfBirth ? 'border-red-400' : 'border-[#434343]',
+                                        )}
+                                    />
                                 )}
                             />
                         </div>
@@ -146,7 +130,7 @@ export default function Index() {
                                         placeholder="ID (Required)"
                                         {...field}
                                         className={clsx(
-                                            'w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
+                                            'placeholder-custom w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
                                             errors.ID ? 'border-red-400' : 'border-[#434343]',
                                         )}
                                     />
@@ -164,7 +148,7 @@ export default function Index() {
                                         placeholder="PassWord (Required)"
                                         {...field}
                                         className={clsx(
-                                            'w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
+                                            'placeholder-custom w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
                                             errors.passWord ? 'border-red-400' : 'border-[#434343]',
                                         )}
                                     />
@@ -182,7 +166,7 @@ export default function Index() {
                                         placeholder="Confirm PassWord (Required)"
                                         {...field}
                                         className={clsx(
-                                            'w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
+                                            'placeholder-custom w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',
                                             errors.confirmPassword ? 'border-red-400' : 'border-[#434343]',
                                         )}
                                     />
@@ -191,9 +175,9 @@ export default function Index() {
                         </div>
                         <button
                             type="submit"
-                            className="w-full h-[45px] bg-customColor-primary text-center rounded-[50px] border border-[]w-full h-[45px] text-center text-lg leading-none font-semibold text-white bg-customColor-primary rounded-[50px] border border-[#99999926]"
+                            className="w-full h-[45px] text-center text-lg leading-none font-semibold text-white bg-customColor-primary rounded-[50px] border border-[#99999926]"
                         >
-                            Sign In
+                            Sign Up
                         </button>
                     </form>
                     <div className="text-[#BBB] text-sm leading-none font-normal tracking-[-0.5px] font-notoSansKr">
@@ -209,7 +193,7 @@ export default function Index() {
                         </p>
                         <p className="pt-8 border-t border-[#444]">
                             Already have an account?&nbsp;&nbsp;
-                            <Link to="/" className="text-customColor-primary inline-flex items-center">
+                            <Link to="/login" className="text-customColor-primary inline-flex items-center">
                                 Sign in &nbsp;&nbsp;
                                 <img src={icon1} alt="icon" />
                             </Link>
