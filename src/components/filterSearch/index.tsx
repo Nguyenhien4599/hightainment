@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import { DayPicker } from 'react-day-picker';
 import React from 'react';
-import moment from 'moment';
+import DatePicker from 'react-datepicker';
 
 import FilterSearchSelectItem from './FilterSearchSelectItem';
 import Button from './Button';
@@ -13,12 +12,9 @@ import styles from './styles.module.css';
 export default function Index() {
     const refEl = React.useRef<HTMLDivElement | null>(null);
     const optionsRef = React.useRef<HTMLDivElement | null>(null);
-    const dayPickerStartRef = React.useRef<HTMLDivElement>(null);
-    const dayPickerEndRef = React.useRef<HTMLDivElement>(null);
     const [openOptions, setOpenOptions] = React.useState(false);
-    const [startDate, setStartDate] = React.useState<string | Date | undefined>(undefined);
-    const [endDate, setEndDate] = React.useState<string | Date | undefined>(undefined);
-    const [isOpen, setIsOpen] = React.useState<string | null>(null);
+    const [startDate, setStartDate] = React.useState<Date | undefined>(undefined);
+    const [endDate, setEndDate] = React.useState<Date | undefined>(undefined);
     const [isActiveDate, setActiveDate] = React.useState<number | null>(null);
     const [isActiveMovie, setActiveMovie] = React.useState<number | null>(null);
 
@@ -27,9 +23,13 @@ export default function Index() {
             refEl.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         const handleCloseMenu = (e: MouseEvent) => {
             const target = e.target as Node;
-            if (!optionsRef.current?.contains(target) && !refEl.current?.contains(target) && openOptions) {
+            if (
+                !optionsRef.current?.contains(target) &&
+                !refEl.current?.contains(target) &&
+                openOptions &&
+                !(target as Element).classList.contains('react-datepicker__day')
+            ) {
                 setOpenOptions(false);
-                setIsOpen(null);
             }
         };
 
@@ -46,26 +46,9 @@ export default function Index() {
         if (refEl.current) refEl.current.previousElementSibling?.classList.add('border-r-0');
     };
 
-    const handleDayClick = (day: Date) => {
-        setIsOpen(null);
-    };
-
-    const handleInputDatePickerClick = (type: string) => () => {
-        setIsOpen(type);
-    };
-
-    const handleSelectDate = (type: string) => (val: Date | undefined) => {
-        if (type === 'start') setStartDate(moment(val).format('YYYY-MM-DD'));
-        else setEndDate(moment(val).format('YYYY-MM-DD'));
-        setIsOpen(null);
-    };
-
-    const handleBlurDatepickerStart = (e: React.FocusEvent<HTMLDivElement>) => {
-        if (dayPickerStartRef.current && !dayPickerStartRef.current.contains(e.relatedTarget)) setIsOpen(null);
-    };
-
-    const handleBlurDatepickerEnd = (e: React.FocusEvent<HTMLDivElement>) => {
-        if (dayPickerEndRef.current && !dayPickerEndRef.current.contains(e.relatedTarget)) setIsOpen(null);
+    const handleSelectDate = (type: string) => (val: any | undefined) => {
+        if (type === 'start') setStartDate(val);
+        else setEndDate(val);
     };
 
     return (
@@ -126,65 +109,25 @@ export default function Index() {
                                 ))}
                             </div>
                             <div className="grid grid-cols-[1fr_12px_1fr] gap-x-3 sm-md:gap-x-1">
-                                <div ref={dayPickerStartRef} onBlur={handleBlurDatepickerStart}>
-                                    <input
-                                        type="text"
-                                        value={startDate ? startDate.toString() : ''}
-                                        readOnly
-                                        onClick={handleInputDatePickerClick('start')}
-                                        placeholder="Start date"
-                                        className={clsx(
-                                            'w-full h-full rounded-lg bg-[#222] border border-[#434343] px-4 py-3 outline-none text-white text-base font-bold',
-                                            styles['custom-datepicker'],
-                                        )}
-                                    />
-                                    {isOpen === 'start' && (
-                                        <div className="absolute bg-[#222] text-white p-2 rounded-lg sm-md:left-0">
-                                            <DayPicker
-                                                mode="single"
-                                                selected={startDate as Date}
-                                                onSelect={handleSelectDate('start')}
-                                                onDayClick={handleDayClick}
-                                                modifiersClassNames={{
-                                                    selected: 'bg-customColor-primary text-white rounded-full',
-                                                    today: 'text-customColor-primary',
-                                                }}
-                                            />
-                                        </div>
-                                    )}
-                                </div>
+                                <DatePicker
+                                    selected={startDate}
+                                    placeholderText="Start date"
+                                    dateFormat="dd/MM/yyyy"
+                                    onChange={handleSelectDate('start')}
+                                    className="w-full h-full rounded-lg bg-[#222] border border-[#434343] px-4 py-3 outline-none text-white text-base font-bold"
+                                />
 
                                 <span className="text-xl font-normal text-[#BBB] leading-none tracking-[-0.5px] self-center">
                                     ~
                                 </span>
 
-                                <div ref={dayPickerEndRef} onBlur={handleBlurDatepickerEnd}>
-                                    <input
-                                        type="text"
-                                        readOnly
-                                        value={endDate ? endDate.toString() : ''}
-                                        onClick={handleInputDatePickerClick('end')}
-                                        placeholder="End date"
-                                        className={clsx(
-                                            'w-full h-full rounded-lg bg-[#222] border border-[#434343] px-4 py-3 outline-none text-white text-base font-bold',
-                                            styles['custom-datepicker'],
-                                        )}
-                                    />
-                                    {isOpen === 'end' && (
-                                        <div className="absolute bg-[#222] text-white p-2 rounded-lg sm-md:left-0">
-                                            <DayPicker
-                                                mode="single"
-                                                selected={endDate as Date}
-                                                onSelect={handleSelectDate('end')}
-                                                onDayClick={handleDayClick}
-                                                modifiersClassNames={{
-                                                    selected: 'bg-customColor-primary text-white rounded-full',
-                                                    today: 'text-customColor-primary',
-                                                }}
-                                            />
-                                        </div>
-                                    )}
-                                </div>
+                                <DatePicker
+                                    selected={endDate}
+                                    placeholderText="End date"
+                                    onChange={handleSelectDate('end')}
+                                    dateFormat="dd/MM/yyyy"
+                                    className="w-full h-full rounded-lg bg-[#222] border border-[#434343] px-4 py-3 outline-none text-white text-base font-bold"
+                                />
                             </div>
                         </section>
                         <section className="mt-6">

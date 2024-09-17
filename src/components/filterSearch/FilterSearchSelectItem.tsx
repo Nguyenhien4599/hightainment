@@ -132,6 +132,7 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
     const refEl = React.useRef<HTMLDivElement | null>(null);
     const selectRef = React.useRef(null);
     const [toggleOpen, setToggleOpen] = React.useState(false);
+    const [isOpenOptions, setIsOpenOptions] = React.useState(false);
 
     React.useEffect(() => {
         const handleCloseMenu = (e: MouseEvent) => {
@@ -163,8 +164,13 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
 
     const handleClickItemSearch = () => {
         if (selectRef.current) {
-            (selectRef.current as any).focus();
-            (selectRef.current as any).openMenu();
+            if (isOpenOptions) {
+                (selectRef.current as any).blur();
+            } else {
+                (selectRef.current as any).focus();
+                (selectRef.current as any).openMenu();
+            }
+            setIsOpenOptions(!isOpenOptions);
         }
     };
 

@@ -12,6 +12,7 @@ module.exports = {
           "Helvetica",
           "sans-serif",
         ],
+        notoSansKr: ["Noto Sans KR", "sans-serif"],
       },
       colors: {
         customColor: {

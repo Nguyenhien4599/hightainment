@@ -30,7 +30,7 @@ export default function Index() {
                         <nav className="mt-6 mb-[32px] grid grid-cols-[auto_2px_max-content_2px_auto] gap-x-2">
                             <Link
                                 className="text-[#9D9D9D] self-center cursor-pointer text-xs leading-none font-medium uppercase text-right"
-                                to="/"
+                                to="/register"
                             >
                                 Sign up
                             </Link>

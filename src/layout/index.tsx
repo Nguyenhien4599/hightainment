@@ -17,7 +17,9 @@ export default function Index({ children }: Props) {
                 <aside className="sm-md:hidden md-lg:hidden bg-customColor-bgSideBar border-r border-r-[#ffffff1a] row-start-1 row-end-3 px-6 grid grid-rows-[max-content_minmax(0,_1fr)] pb-9">
                     <SideBar />
                 </aside>
-                <main className="pt-[60px] px-[72px] sm-md:pe-0 sm-md:ps-6 sm-md:pt-9 container">{children}</main>
+                <main className="pt-[60px] px-[72px] sm-md:pe-0 sm-md:ps-6 sm-md:pt-9 container overflow-hidden sm-md:!overflow-hidden">
+                    {children}
+                </main>
                 <Footer />
             </section>
             <NavigationBottom />

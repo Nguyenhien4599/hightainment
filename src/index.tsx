@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
-import 'react-day-picker/style.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import './index.css';
 import router from './routers';

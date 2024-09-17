@@ -77,6 +77,7 @@ export default function Index({ title }: Props) {
             </div>
             <Swiper
                 modules={[Navigation]}
+                className="overflow-y-clip overflow-x-visible"
                 onSlideChange={() => console.log('slide change')}
                 navigation={{
                     nextEl: `.custom-next-${title.replaceAll(' ', '')}`,
