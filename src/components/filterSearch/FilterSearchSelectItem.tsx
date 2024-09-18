@@ -6,7 +6,7 @@ const customStyles = {
     placeholder: (provided: any) => ({
         ...provided,
         color: '#999',
-        fontSize: '20px',
+        fontSize: window.innerWidth > 1439 ? '18px' : '20px',
         fontWeight: '700',
     }),
     control: (provided: any, state: any) => ({
@@ -30,7 +30,7 @@ const customStyles = {
     }),
     menu: (provided: any, state: any) => ({
         ...provided,
-        width: window.innerWidth < 1025 ? 'auto' : '280px',
+        width: 'auto',
         left: '-53px',
         right: '-17px',
         top: '89%',
@@ -59,6 +59,9 @@ const customStyles = {
         color: '#ffffff', // Màu chữ khi option được chọn
         marginBottom: '12px',
         borderRadius: '8px',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
         '&:hover': {
             backgroundColor: '#999',
         },
@@ -125,14 +128,24 @@ interface Props {
     svgTag: string;
     openOptions: boolean;
     setOpenOptions: Function;
+    openOptionsProps: boolean;
+    setOpenOptionsProps: Function;
+    idx: number;
 }
 
-export default function FilterSearchSelectItem({ placeholderText, svgTag, openOptions, setOpenOptions }: Props) {
+export default function FilterSearchSelectItem({
+    placeholderText,
+    svgTag,
+    openOptions,
+    setOpenOptions,
+    openOptionsProps,
+    setOpenOptionsProps,
+    idx,
+}: Props) {
     const wrapItemRef = React.useRef<HTMLDivElement | null>(null);
     const refEl = React.useRef<HTMLDivElement | null>(null);
     const selectRef = React.useRef(null);
     const [toggleOpen, setToggleOpen] = React.useState(false);
-    const [isOpenOptions, setIsOpenOptions] = React.useState(false);
 
     React.useEffect(() => {
         const handleCloseMenu = (e: MouseEvent) => {
@@ -164,13 +177,14 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
 
     const handleClickItemSearch = () => {
         if (selectRef.current) {
-            if (isOpenOptions) {
+            if (openOptionsProps) {
                 (selectRef.current as any).blur();
+                setOpenOptionsProps(null);
             } else {
                 (selectRef.current as any).focus();
                 (selectRef.current as any).openMenu();
+                setOpenOptionsProps(idx);
             }
-            setIsOpenOptions(!isOpenOptions);
         }
     };
 
@@ -180,7 +194,7 @@ export default function FilterSearchSelectItem({ placeholderText, svgTag, openOp
                 onClick={handleClickItemSearch}
                 ref={refEl}
                 className={clsx(
-                    'px-4 w-[280px] h-full flex justify-center items-center gap-3 bg-[#333] border-b-0 cursor-pointer sm-md:w-full sm-md:rounded-[5px] sm-md:h-[82px]',
+                    'px-4 w-[280px] xl:w-auto h-full flex justify-center items-center gap-3 bg-[#333] border-b-0 cursor-pointer sm-md:w-full sm-md:rounded-[5px] sm-md:h-[82px]',
                     toggleOpen
                         ? 'border !border-customColor-primary sm-md:rounded-b-none'
                         : 'border-r border-r-[#666] sm-md:border-r-transparent',

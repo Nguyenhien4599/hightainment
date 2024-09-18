@@ -32,7 +32,7 @@ module.exports = {
         "2xl": "1536px",
         "sm-md": { min: "360px", max: "1024px" },
         "md-lg": { min: "768px", max: "1024px" },
-        "lg-xl": { min: "1025px", max: "1279px" },
+        "lg-xl": { min: "1024px", max: "1279px" },
       },
     },
   },

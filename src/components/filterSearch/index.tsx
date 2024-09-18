@@ -17,6 +17,7 @@ export default function Index() {
     const [endDate, setEndDate] = React.useState<Date | undefined>(undefined);
     const [isActiveDate, setActiveDate] = React.useState<number | null>(null);
     const [isActiveMovie, setActiveMovie] = React.useState<number | null>(null);
+    const [openOptionsProps, setOpenOptionsProps] = React.useState<number | null>(null);
 
     React.useEffect(() => {
         if (openOptions && refEl.current && window.matchMedia('(max-width: 768px)').matches)
@@ -43,6 +44,7 @@ export default function Index() {
 
     const handleOpenOptions = () => {
         setOpenOptions(!openOptions);
+        setOpenOptionsProps(null);
         if (refEl.current) refEl.current.previousElementSibling?.classList.add('border-r-0');
     };
 
@@ -52,9 +54,9 @@ export default function Index() {
     };
 
     return (
-        <section className="flex gap-6 sm-md:flex-col">
-            <div className="flex relative sm-md:flex-col sm-md:gap-6">
-                <button className="w-[71px] h-[72px] flex justify-center items-center bg-customColor-primary cursor-pointer rounded-tl-lg rounded-bl-lg sm-md:ms-auto sm-md:w-[103px] sm-md:h-[32px] sm-md:rounded-[52px] sm-md:justify-between sm-md:px-3">
+        <section className="flex justify-between gap-6 sm-md:flex-col">
+            <div className="grid grid-cols-[71px_1fr_1fr_1fr_1fr] flex-1 relative sm-md:flex sm-md:flex-col sm-md:gap-6">
+                <button className="w-full h-[72px] flex justify-center items-center bg-customColor-primary cursor-pointer rounded-tl-lg rounded-bl-lg sm-md:ms-auto sm-md:w-[103px] sm-md:h-[32px] sm-md:rounded-[52px] sm-md:justify-between sm-md:px-3">
                     <img src={iconSearch} alt="icon" className="sm-md:w-6 sm-md:h-6" />
                     <span className="hidden sm-md:block text-[#EAEAEA] font-bold text-[15px]">Reset</span>
                 </button>
@@ -65,12 +67,15 @@ export default function Index() {
                         placeholderText={f.text}
                         svgTag={f.icon}
                         key={i}
+                        openOptionsProps={openOptionsProps === i}
+                        setOpenOptionsProps={setOpenOptionsProps}
+                        idx={i}
                     />
                 ))}
 
                 <div
                     className={clsx(
-                        'relative cursor-pointer px-4 w-[280px] flex justify-center items-center gap-3 bg-[#333] border-b-0 rounded-tr-lg rounded-br-lg sm-md:w-full sm-md:rounded-[5px] sm-md:h-[82px]',
+                        'relative cursor-pointer px-4 w-[280px] xl:w-auto flex justify-center items-center gap-3 bg-[#333] border-b-0 rounded-tr-lg rounded-br-lg sm-md:w-full sm-md:rounded-[5px] sm-md:h-[82px]',
                         openOptions &&
                             `${styles['custom-item-filter-search']} rounded-br-none border !border-customColor-primary sm-md:rounded-b-none`,
                     )}
@@ -151,7 +156,7 @@ export default function Index() {
                 )}
             </div>
             <div className="sm-md:grid sm-md:grid-cols-[1fr_1fr] sm-md:grid-rows-[48px] sm-md:gap-3">
-                <button className="h-full w-[176px] bg-[#666] text-customColor-primary border border-customColor-primary cursor-pointer text-xl leading-none font-bold rounded-lg sm-md:w-full">
+                <button className="h-full w-[176px] xl:w-[150px] bg-[#666] text-customColor-primary border border-customColor-primary cursor-pointer text-xl xl:text-lg leading-none font-bold rounded-lg sm-md:w-full">
                     Save Aura
                 </button>
                 <button className=" hidden h-full w-full text-white bg-customColor-primary cursor-pointer text-xl leading-none font-bold rounded-lg sm-md:block">
