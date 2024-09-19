@@ -1,5 +1,8 @@
 import FilterSearch from '@/components/filterSearch';
 import Carousel from '@/components/carousel';
+import Item from '@/components/carousel/Item';
+import { listDataCarouselCard as data } from '@/const/list';
+import { breakPointsCarouselCard } from '@/const/breakpoints';
 
 export default function Index() {
     return (
@@ -9,11 +12,19 @@ export default function Index() {
             </section>
 
             <section className="mt-14 sm-md:mt-0">
-                <Carousel title={'Movie'} />
+                <Carousel breakPoints={breakPointsCarouselCard} title={'Movie'}>
+                    {data.map((item, index) => (
+                        <Item key={index} title={item.title} img={item.img} />
+                    ))}
+                </Carousel>
             </section>
 
             <section className="mt-14">
-                <Carousel title={'TV Show'} />
+                <Carousel breakPoints={breakPointsCarouselCard} title={'TV Show'}>
+                    {data.map((item, index) => (
+                        <Item key={index} title={item.title} img={item.img} />
+                    ))}
+                </Carousel>
             </section>
         </>
     );

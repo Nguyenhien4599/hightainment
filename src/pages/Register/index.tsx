@@ -46,7 +46,7 @@ export default function Index() {
 
     const handleChangeDate = (val: Date | null) => {
         setDateOfBirthState(val);
-        setValue('dateOfBirth', moment(val).format('DD/MM/YYYY'), { shouldValidate: true });
+        setValue('dateOfBirth', moment(val).format('YYYY-MM-DD'), { shouldValidate: true });
     };
 
     const onSubmit = (data: any) => {
@@ -108,7 +108,7 @@ export default function Index() {
                                         {...field}
                                         selected={dateOfBirthState}
                                         placeholderText="Date of birth (Required)"
-                                        dateFormat="dd/MM/yyyy"
+                                        dateFormat="yyyy-MM-dd"
                                         onChange={handleChangeDate}
                                         className={clsx(
                                             'w-full px-4 py-3 outline-none bg-[#222] rounded-lg border text-sm leading-none font-normal tracking-[-0.5px] text-[#BBB]',

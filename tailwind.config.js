@@ -13,6 +13,7 @@ module.exports = {
           "sans-serif",
         ],
         notoSansKr: ["Noto Sans KR", "sans-serif"],
+        Anton: ["Anton", "sans-serif"],
       },
       colors: {
         customColor: {
@@ -36,5 +37,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

@@ -22,7 +22,7 @@ export default function Index() {
 
     return (
         <>
-            <section className="hidden fixed bottom-0 z-10 w-full bg-[#222] py-4 sm-md:block md-lg:block">
+            <section className="hidden fixed bottom-0 z-20 w-full bg-[#222] py-4 sm-md:block md-lg:block">
                 <nav className="grid grid-cols-[1fr_1fr_1fr]">
                     <Link to="/" className="flex flex-col justify-center items-center">
                         <span>
@@ -39,7 +39,7 @@ export default function Index() {
                         </span>
                         <span className="text-[#999] text-xs font-medium inline-block mt-[10px]">My Auras</span>
                     </button>
-                    <Link to="/" className="flex flex-col justify-center items-center">
+                    <Link to="/profile" className="flex flex-col justify-center items-center">
                         <span>
                             <img src={icon3} alt="icon" />
                         </span>

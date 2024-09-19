@@ -3,42 +3,28 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import clsx from 'clsx';
 
-import i1 from '@/assets/images/c1.png';
-import i2 from '@/assets/images/c2.jpeg';
-import i3 from '@/assets/images/c3.jpeg';
-import i4 from '@/assets/images/c4.jpeg';
-import i5 from '@/assets/images/c5.jpeg';
-import Item from './Item';
 import styles from './styles.module.css';
+
+interface BreakpointConfig {
+    slidesPerView: number;
+    spaceBetween: number;
+}
 
 interface Props {
     title: string;
+    children: React.ReactNode;
+    titlePrimaryColor?: boolean;
+    mode?: string;
+    breakPoints?: { [breakpoint: number]: BreakpointConfig };
 }
 
-const data = [
-    {
-        title: 'ROCKETMAN',
-        img: i1,
-    },
-    {
-        title: 'MOVIE TITLE',
-        img: i2,
-    },
-    {
-        title: 'MOVIE TITLE',
-        img: i3,
-    },
-    {
-        title: 'MOVIE TITLE',
-        img: i4,
-    },
-    {
-        title: 'MOVIE TITLE',
-        img: i5,
-    },
-];
+export default function Index({ title, titlePrimaryColor, breakPoints, mode, children }: Props) {
+    const [activeIndex, setActiveIndex] = React.useState(0);
 
-export default function Index({ title }: Props) {
+    const handleClickCarousel = (idx: number) => {
+        setActiveIndex(idx);
+    };
+
     return (
         <>
             <div
@@ -47,7 +33,14 @@ export default function Index({ title }: Props) {
                     styles['header-carousel'],
                 )}
             >
-                <span className="text-white text-[42px] sm-md:text-2xl font-bold leading-none">{title}</span>
+                <span
+                    className={clsx(
+                        'text-[42px] sm-md:text-2xl font-bold leading-none',
+                        titlePrimaryColor ? 'text-customColor-primary' : 'text-white',
+                    )}
+                >
+                    {title}
+                </span>
                 <button
                     className={clsx(
                         ' w-[42px] h-[42px] sm-md:w-6 sm-md:h-6 rounded-full flex justify-center items-center bg-[#999] border-none outline-none cursor-pointer',
@@ -78,29 +71,18 @@ export default function Index({ title }: Props) {
             <Swiper
                 modules={[Navigation]}
                 className="overflow-y-clip overflow-x-visible"
-                onSlideChange={() => console.log('slide change')}
                 navigation={{
                     nextEl: `.custom-next-${title.replaceAll(' ', '')}`,
                     prevEl: `.custom-prev-${title.replaceAll(' ', '')}`,
                 }}
-                breakpoints={{
-                    360: {
-                        slidesPerView: 2.5,
-                        spaceBetween: 24,
-                    },
-                    768: {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                    1024: {
-                        slidesPerView: 4.5,
-                        spaceBetween: 30,
-                    },
-                }}
+                breakpoints={breakPoints}
             >
-                {data.map((c, i) => (
-                    <SwiperSlide className="sm-md:!w-[127px] md-lg:!w-[205px]" key={i}>
-                        <Item title={c.title} img={c.img} />
+                {React.Children.map(children, (child, index: number) => (
+                    <SwiperSlide
+                        onClick={() => handleClickCarousel(index)}
+                        className={clsx(mode === 'review' ? '' : 'sm-md:!w-[127px] md-lg:!w-[205px]')}
+                    >
+                        {React.cloneElement(child as React.ReactElement, { activeIndex: index === activeIndex })}
                     </SwiperSlide>
                 ))}
             </Swiper>
