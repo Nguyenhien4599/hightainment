@@ -45,9 +45,13 @@ const router = createBrowserRouter([
         path: '/profile',
         element: (
             <React.Suspense fallback={<div>Loading...</div>}>
-                <Layout>
-                    <Profile />
-                </Layout>
+                <PrivateRoute
+                    element={
+                        <Layout>
+                            <Profile />
+                        </Layout>
+                    }
+                />
             </React.Suspense>
         ),
     },
@@ -55,9 +59,13 @@ const router = createBrowserRouter([
         path: '/profile/edit',
         element: (
             <React.Suspense fallback={<div>Loading...</div>}>
-                <Layout>
-                    <EditProfile />
-                </Layout>
+                <PrivateRoute
+                    element={
+                        <Layout>
+                            <EditProfile />
+                        </Layout>
+                    }
+                />
             </React.Suspense>
         ),
     },
