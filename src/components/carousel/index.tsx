@@ -19,12 +19,6 @@ interface Props {
 }
 
 export default function Index({ title, titlePrimaryColor, breakPoints, mode, children }: Props) {
-    const [activeIndex, setActiveIndex] = React.useState(0);
-
-    const handleClickCarousel = (idx: number) => {
-        setActiveIndex(idx);
-    };
-
     return (
         <>
             <div
@@ -77,12 +71,9 @@ export default function Index({ title, titlePrimaryColor, breakPoints, mode, chi
                 }}
                 breakpoints={breakPoints}
             >
-                {React.Children.map(children, (child, index: number) => (
-                    <SwiperSlide
-                        onClick={() => handleClickCarousel(index)}
-                        className={clsx(mode === 'review' ? '' : 'sm-md:!w-[127px] md-lg:!w-[205px]')}
-                    >
-                        {React.cloneElement(child as React.ReactElement, { activeIndex: index === activeIndex })}
+                {React.Children.map(children, (child) => (
+                    <SwiperSlide className={clsx(mode !== 'review' && 'sm-md:!w-[127px] md-lg:!w-[205px]')}>
+                        {child}
                     </SwiperSlide>
                 ))}
             </Swiper>

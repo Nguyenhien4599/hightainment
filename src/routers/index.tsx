@@ -8,6 +8,7 @@ const Home = React.lazy(() => import('@/pages/Home'));
 const Login = React.lazy(() => import('@/pages/Login'));
 const Register = React.lazy(() => import('@/pages/Register'));
 const Profile = React.lazy(() => import('@/pages/Profile'));
+const EditProfile = React.lazy(() => import('@/pages/Profile/Edit'));
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,16 @@ const router = createBrowserRouter([
             <React.Suspense fallback={<div>Loading...</div>}>
                 <Layout>
                     <Profile />
+                </Layout>
+            </React.Suspense>
+        ),
+    },
+    {
+        path: '/profile/edit',
+        element: (
+            <React.Suspense fallback={<div>Loading...</div>}>
+                <Layout>
+                    <EditProfile />
                 </Layout>
             </React.Suspense>
         ),

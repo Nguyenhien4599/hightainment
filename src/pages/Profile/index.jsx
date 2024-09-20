@@ -24,7 +24,10 @@ export default function Index() {
                     <p className="text-white text-2xl sm-md:text-lg leading-none font-semibold mb-3">
                         avan123@avansoft.co.kr
                     </p>
-                    <Link to="/" className="text-customColor-primary text-2xl sm-md:text-lg leading-none font-normal">
+                    <Link
+                        to="/profile/edit"
+                        className="text-customColor-primary text-2xl sm-md:text-lg leading-none font-normal"
+                    >
                         Manage Account
                     </Link>
                 </div>

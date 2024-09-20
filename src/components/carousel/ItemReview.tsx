@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 
 import avatar from '@/assets/images/avatar.jpeg';
 import icon from '@/assets/images/icon6.svg';
@@ -7,51 +6,37 @@ import icon1 from '@/assets/images/icon7.svg';
 import iconLike from '@/assets/images/like.svg';
 import iconStart from '@/assets/images/start.svg';
 
-interface Props {
-    activeIndex?: number;
-}
+export default function ItemReview() {
+    const [isHover, setIsHover] = React.useState(false);
 
-export default function ItemReview({ activeIndex }: Props) {
+    const handleHover = () => {
+        setIsHover(!isHover);
+    };
+
     return (
-        <div className={clsx('px-[25px] py-4  rounded-lg', activeIndex ? 'bg-[#EEE]' : 'bg-[#222]')}>
+        <div
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
+            className="group px-[25px] py-4 bg-[#222]  rounded-lg hover:bg-[#EEE] duration-300 transition-all"
+        >
             <div className="grid grid-cols-[34px_1fr_1fr] gap-3 mb-[9px]">
                 <div>
                     <img src={avatar} alt="img" className="w-full h-[34px] rounded-full" />
                 </div>
-                <p
-                    className={clsx(
-                        'text-2xl leading-none font-semibold self-center',
-                        activeIndex ? 'text-[#000]' : 'text-[#999]',
-                    )}
-                >
+                <p className="text-2xl leading-none text-[#999] font-semibold self-center duration-300 transition-all group-hover:text-[#000]">
                     ABRAHAM
                 </p>
                 <span className="justify-self-end">
-                    <img src={activeIndex ? icon : icon1} alt="icon" />
+                    <img src={isHover ? icon : icon1} alt="icon" />
                 </span>
             </div>
-            <p
-                className={clsx(
-                    ' font-semibold text-xl leading-none show-ellipsis',
-                    activeIndex ? 'text-customColor-bgSideBar' : 'text-[#666]',
-                )}
-            >
+            <p className=" font-semibold text-xl leading-none show-ellipsis text-[#666] duration-300 transition-all group-hover:text-customColor-bgSideBar">
                 Rocketman: A Vibrant Celebration of Elton John's Life and Music
             </p>
-            <span
-                className={clsx(
-                    ' text-sm leading-none font-normal',
-                    activeIndex ? 'text-customColor-bgSideBar' : 'text-[#666]',
-                )}
-            >
+            <span className="text-sm leading-none font-normal text-[#666] duration-300 transition-all group-hover:text-customColor-bgSideBar">
                 November 18, 2024
             </span>
-            <p
-                className={clsx(
-                    'mt-[19px] text-sm leading-none font-normal mb-1 line-clamp-3',
-                    activeIndex ? 'text-customColor-bgSideBar' : 'text-[#999]',
-                )}
-            >
+            <p className="mt-[19px] text-sm leading-none font-normal mb-1 line-clamp-3 text-[#999] duration-300 transition-all group-hover:text-customColor-bgSideBar">
                 Rocketman is a truly spectacular cinematic journey that beautifully captures the essence of Elton John's
                 extraordinary life and iconic music. This film masterfully balances emotional depth and vibrant
                 performances, with Taron Egerton delivering a standout portrayal of Elton John, embodying his spirit and
