@@ -29,9 +29,11 @@ export default function Edit() {
                 <h3 className="text-white text-[32px] sm-md:text-2xl sm-md:leading-none font-normal font-Anton mb-4">
                     PERSONAL INFORMATION
                 </h3>
-                <div className="grid grid-cols-2 gap-x-6 mb-6 sm-md:gap-x-3 sm-md:grid-cols-[130px_1fr]">
+                <div className="grid grid-cols-[150px_1fr] gap-x-6 mb-6 sm-md:gap-x-3 sm-md:grid-cols-[130px_1fr]">
                     <span className="text-2xl sm-md:text-xl leading-none font-medium text-white">Current name</span>
-                    <span className="text-2xl sm-md:text-xl leading-none font-bold text-white">Calvin Klein</span>
+                    <span className="text-2xl self-start sm-md:text-xl leading-none font-bold text-white">
+                        Calvin Klein
+                    </span>
                 </div>
                 <div>
                     <label className="block text-base leading-none text-white font-medium">First and Last name</label>
@@ -49,9 +51,9 @@ export default function Edit() {
             </section>
             <section className="mt-[55px]">
                 <h3 className="text-white text-[32px sm-md:text-2xl font-normal font-Anton mb-4">EMAIL ADDRESS</h3>
-                <div className="grid grid-cols-2 gap-x-6 mb-6 sm-md:gap-x-3 sm-md:grid-cols-[130px_1fr]">
+                <div className="grid grid-cols-[150px_1fr] gap-x-6 mb-6 sm-md:gap-x-3 sm-md:grid-cols-[130px_1fr]">
                     <span className="text-2xl sm-md:text-xl leading-none font-medium text-white">Current email</span>
-                    <span className="text-2xl sm-md:text-xl leading-none font-bold text-white show-ellipsis">
+                    <span className="text-2xl self-start sm-md:text-xl leading-none font-bold text-white show-ellipsis">
                         avan123@avansoft.co.kr
                     </span>
                 </div>
