@@ -1,28 +1,66 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import avatar from '@/assets/images/avatar.jpeg';
 import icon from '@/assets/images/c10.svg';
 import iconClose from '@/assets/images/iconModalBottomToTop.svg';
+import { listValidTypesAvatar } from '@/const/list';
 
 export default function Edit() {
     const [isOpen, setIsOpen] = React.useState(false);
+    const [urlAvatar, setUrlAvatar] = React.useState(avatar);
+    const refToTop = React.useRef(null);
+    const refFile = React.useRef(null);
+
+    React.useEffect(() => {
+        if (isOpen) refToTop.current.scrollIntoView({ behavior: 'smooth' });
+        return () => {
+            URL.revokeObjectURL(urlAvatar);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isOpen]);
 
     const handleToggleOpenModal = () => {
         setIsOpen(!isOpen);
     };
+
+    const handleChangeAvatar = () => {
+        refFile.current.click();
+    };
+    const handleChangeFile = () => {
+        const file = refFile.current.files[0];
+        if (file) {
+            if (!listValidTypesAvatar.includes(file.type)) {
+                toast.error('Invalid file type selected, an image selection is required.');
+                return;
+            }
+            const url = URL.createObjectURL(file);
+            setUrlAvatar(url);
+        }
+    };
+
     return (
-        <section className="sm-md:pe-6">
+        <section className="sm-md:pe-6" ref={refToTop}>
             <header>
                 <div className="relative w-[200px] h-[200px] sm-md:w-[100%] sm-md:h-[100%] flex justify-center items-center">
                     <img
-                        src={avatar}
+                        src={urlAvatar}
                         alt="avatar"
                         className="w-[180px] h-[180px] sm-md:w-[80px] sm-md:h-[80px] rounded-full"
                     />
-                    <span className="absolute top-[78%] left-[68%]  w-9 h-9 sm-md:w-6 sm-md:h-6 sm-md:top-[80%] sm-md:left-[54%] bg-[#333] rounded-full flex justify-center items-center cursor-pointer">
+                    <span
+                        onClick={handleChangeAvatar}
+                        className="absolute top-[78%] left-[68%]  w-9 h-9 sm-md:w-6 sm-md:h-6 sm-md:top-[80%] sm-md:left-[54%] bg-[#333] rounded-full flex justify-center items-center cursor-pointer"
+                    >
                         <img src={icon} alt="icon" className="sm-md:w-4 sm-md:h-4" />
                     </span>
+                    <input
+                        type="file"
+                        className="absolute top-[10000px] opacity-0 invisible"
+                        ref={refFile}
+                        onChange={handleChangeFile}
+                    />
                 </div>
             </header>
             <section className="mt-[55px]">

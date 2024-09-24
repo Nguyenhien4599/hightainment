@@ -59,3 +59,5 @@ export const listDataCarouselCard = [
         img: i5,
     },
 ];
+
+export const listValidTypesAvatar = ['image/jpeg', 'image/png', 'image/gif'];
