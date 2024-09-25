@@ -18,8 +18,8 @@ import ItemReview from '@/components/carousel/ItemReview';
 export default function Index() {
     return (
         <>
-            <section className="grid grid-cols-[333px_1fr] grid-rows-[538px] gap-x-9 relative">
-                <div className="absolute top-[-60px] left-[-72px] right-[-72px] z-0">
+            <section className="grid grid-cols-[333px_1fr] grid-rows-[538px] gap-x-9 relative sm-md:grid-cols-[1fr] sm-md:pe-6">
+                <div className="absolute top-[-60px] left-[-72px] right-[-72px] z-0 sm-md:hidden">
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-80"></div>
                     <img src={banner} alt="anh" />
                 </div>
@@ -150,15 +150,16 @@ export default function Index() {
                     breakPoints={breakPointsCarouselReview}
                     mode="review"
                     titlePrimaryColor
+                    useFont
                 >
                     {listDataCarouselVideo.map((_, index) => (
-                        <ItemReview key={index} useFont />
+                        <ItemReview key={index} useFont showText="BEST" showHasTag />
                     ))}
                 </Carousel>
             </section>
 
             <section className="mt-[100px]">
-                <Carousel title={'Reviews'} breakPoints={breakPointsCarouselReview} mode="review">
+                <Carousel title={'Reviews'} breakPoints={breakPointsCarouselReview} mode="review" useFont>
                     {listDataCarouselVideo.map((_, index) => (
                         <ItemReview key={index} useFont />
                     ))}

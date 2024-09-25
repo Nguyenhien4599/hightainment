@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import avatar from '@/assets/images/avatar.jpeg';
 import icon from '@/assets/images/icon6.svg';
@@ -6,7 +7,13 @@ import icon1 from '@/assets/images/icon7.svg';
 import iconLike from '@/assets/images/like.svg';
 import iconStart from '@/assets/images/start.svg';
 
-export default function ItemReview() {
+interface Props {
+    showEllipsis?: boolean;
+    showText?: string;
+    showHasTag?: boolean;
+}
+
+export default function ItemReview({ showEllipsis, showText, showHasTag }: Props) {
     const [isHover, setIsHover] = React.useState(false);
 
     const handleHover = () => {
@@ -26,8 +33,14 @@ export default function ItemReview() {
                 <p className="text-2xl leading-none text-[#999] font-semibold self-center duration-300 transition-all group-hover:text-[#000]">
                     ABRAHAM
                 </p>
-                <span className="justify-self-end">
-                    <img src={isHover ? icon : icon1} alt="icon" />
+                <span
+                    className={clsx(
+                        'justify-self-end',
+                        showText && 'text-customColor-primary font-Anton text-2xl leading-none font-normal',
+                    )}
+                >
+                    {showEllipsis && <img src={isHover ? icon : icon1} alt="icon" />}
+                    {showText}
                 </span>
             </div>
             <p className=" font-semibold text-xl leading-none show-ellipsis text-[#666] duration-300 transition-all group-hover:text-customColor-bgSideBar">
@@ -63,6 +76,20 @@ export default function ItemReview() {
                     <img src={iconStart} alt="icon" className="w-5 h-5" />
                     <span className="text-customColor-primary text-base leading-none font-medium">5.0</span>
                 </div>
+
+                {showHasTag && (
+                    <>
+                        <div className="flex items-center gap-1 py-1 px-3 rounded-[52px] bg-[#333]">
+                            <span className="text-[#EAEAEA] text-[15px] font-normal leading-none"># Happy</span>
+                            <span className="text-base leading-none text-white">5.0</span>
+                        </div>
+
+                        <div className="flex items-center gap-1 py-1 px-3 rounded-[52px] bg-[#333]">
+                            <span className="text-[#EAEAEA] text-[15px] font-normal leading-none"># Interested</span>
+                            <span className="text-base leading-none text-white">5.0</span>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );

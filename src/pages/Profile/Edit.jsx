@@ -88,7 +88,7 @@ export default function Edit() {
                 </div>
             </section>
             <section className="mt-[55px]">
-                <h3 className="text-white text-[32px sm-md:text-2xl font-normal font-Anton mb-4">EMAIL ADDRESS</h3>
+                <h3 className="text-white text-[32px] sm-md:text-2xl font-normal font-Anton mb-4">EMAIL ADDRESS</h3>
                 <div className="grid grid-cols-[150px_1fr] gap-x-6 mb-6 sm-md:gap-x-3 sm-md:grid-cols-[130px_1fr]">
                     <span className="text-2xl sm-md:text-xl leading-none font-medium text-white">Current email</span>
                     <span className="text-2xl self-start sm-md:text-xl leading-none font-bold text-white show-ellipsis">
