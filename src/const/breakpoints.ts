@@ -27,3 +27,18 @@ export const breakPointsCarouselReview = {
         spaceBetween: 24,
     },
 };
+
+export const breakPointsCarouselVideos = {
+    360: {
+        slidesPerView: 1,
+        spaceBetween: 24,
+    },
+    768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+    },
+    1024: {
+        slidesPerView: 'auto',
+        spaceBetween: 24,
+    },
+};

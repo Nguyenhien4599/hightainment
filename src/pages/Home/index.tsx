@@ -2,7 +2,7 @@ import FilterSearch from '@/components/filterSearch';
 import Carousel from '@/components/carousel';
 import Item from '@/components/carousel/Item';
 import { listDataCarouselCard as data } from '@/const/list';
-import { breakPointsCarouselCard } from '@/const/breakpoints';
+import { breakPointsCarouselCard, breakPointsCarouselVideos } from '@/const/breakpoints';
 
 export default function Index() {
     return (

@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      gridAutoRows: {
+        minmax: "minmax(0, 1fr)",
+      },
       fontFamily: {
         sans: ["Roboto", "ui-sans-serif", "system-ui"],
         appleFont: [

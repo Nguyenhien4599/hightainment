@@ -72,7 +72,9 @@ export default function Index({ title, titlePrimaryColor, breakPoints, mode, chi
                 breakpoints={breakPoints}
             >
                 {React.Children.map(children, (child) => (
-                    <SwiperSlide className={clsx(mode !== 'review' && 'sm-md:!w-[127px] md-lg:!w-[205px]')}>
+                    <SwiperSlide
+                        className={clsx(mode !== 'review' ? 'h-auto sm-md:!w-[127px] md-lg:!w-[205px]' : 'w-auto')}
+                    >
                         {child}
                     </SwiperSlide>
                 ))}
