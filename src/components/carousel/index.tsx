@@ -16,9 +16,10 @@ interface Props {
     titlePrimaryColor?: boolean;
     mode?: string;
     breakPoints?: { [breakpoint: number]: BreakpointConfig };
+    useFont?: boolean;
 }
 
-export default function Index({ title, titlePrimaryColor, breakPoints, mode, children }: Props) {
+export default function Index({ title, titlePrimaryColor, breakPoints, mode, children, useFont }: Props) {
     return (
         <>
             <div
@@ -31,6 +32,7 @@ export default function Index({ title, titlePrimaryColor, breakPoints, mode, chi
                     className={clsx(
                         'text-[42px] sm-md:text-2xl font-bold leading-none',
                         titlePrimaryColor ? 'text-customColor-primary' : 'text-white',
+                        useFont && 'font-Anton',
                     )}
                 >
                     {title}

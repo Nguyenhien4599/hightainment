@@ -6,6 +6,9 @@ import i2 from '@/assets/images/c2.jpeg';
 import i3 from '@/assets/images/c3.jpeg';
 import i4 from '@/assets/images/c4.jpeg';
 import i5 from '@/assets/images/c5.jpeg';
+import i6 from '@/assets/images/c14.png';
+import i7 from '@/assets/images/c15.avif';
+import i8 from '@/assets/images/c16.avif';
 
 export const listSidebar = [
     'Hidden Gem',
@@ -61,3 +64,31 @@ export const listDataCarouselCard = [
 ];
 
 export const listValidTypesAvatar = ['image/jpeg', 'image/png', 'image/gif'];
+
+export const listDataCarouselVideo = [
+    {
+        title: 'Rocketman (2019) - Official Teaser Trailer - Paramount Pictures',
+        date: '2018 . 10 . 01',
+        img: i6,
+    },
+    {
+        title: 'Rocketman (2019) - Official Teaser Trailer - Paramount Pictures',
+        date: '2018 . 10 . 01',
+        img: i7,
+    },
+    {
+        title: 'Rocketman (2019) - Official Teaser Trailer - Paramount Pictures',
+        date: '2018 . 10 . 01',
+        img: i8,
+    },
+    {
+        title: 'Rocketman (2019) - Official Teaser Trailer - Paramount Pictures',
+        date: '2018 . 10 . 01',
+        img: i6,
+    },
+    {
+        title: 'Rocketman (2019) - Official Teaser Trailer - Paramount Pictures',
+        date: '2018 . 10 . 01',
+        img: i8,
+    },
+];

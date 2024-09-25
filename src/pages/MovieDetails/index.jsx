@@ -11,7 +11,9 @@ import primeLogo from '@/assets/images/c12.png';
 import banner from '@/assets/images/c13.png';
 import ItemVideo from '@/components/carousel/ItemVideo';
 import Carousel from '@/components/carousel';
-import { breakPointsCarouselVideos } from '@/const/breakpoints';
+import { breakPointsCarouselVideos, breakPointsCarouselReview } from '@/const/breakpoints';
+import { listDataCarouselVideo } from '@/const/list';
+import ItemReview from '@/components/carousel/ItemReview';
 
 export default function Index() {
     return (
@@ -91,9 +93,74 @@ export default function Index() {
             </section>
 
             <section className="mt-[72px]">
-                <Carousel breakPoints={breakPointsCarouselVideos} title={'Videos'} mode={'review'}>
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-                        <ItemVideo key={index} />
+                <Carousel breakPoints={breakPointsCarouselVideos} title={'Videos'} mode={'review'} useFont>
+                    {listDataCarouselVideo.map((item, index) => (
+                        <ItemVideo key={index} title={item.title} urlImg={item.img} date={item.date} />
+                    ))}
+                </Carousel>
+            </section>
+
+            <section className="mt-[100px]">
+                <h3 className="text-white font-Anton text-[32px] font-normal leading-none">Wirte Criticism</h3>
+                <div className="mt-9 mb-8">
+                    <p className="text-[#EAEAEA] text-2xl leading-none font-normal mb-2">ROCKETMAN</p>
+                    <span className="text-[#EAEAEA] text-xl leading-none font-normal">MY Rating</span>
+                    <div className="my-[35px] px-[100px]">
+                        <div className="py-6 rounded-lg  border-2 border-[#555] flex justify-center items-center gap-14">
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
+                        </div>
+                    </div>
+                    <span className="text-[#EAEAEA] text-xl leading-none font-normal">MY Criticism</span>
+                    <div className="my-[35px] px-[100px]">
+                        <div className="p-2 rounded-lg  border-2 border-[#555] flex justify-center items-center gap-14">
+                            <p className="text-[#999] text-sm leading-none font-normal line-clamp-6">
+                                Rocketman is a truly spectacular cinematic journey that beautifully captures the essence
+                                of Elton John's extraordinary life and iconic music. This film masterfully balances
+                                emotional depth and vibrant performances, with Taron Egerton delivering a standout
+                                portrayal of Elton John, embodying his spirit and complexity with remarkable
+                                authenticity and charisma. The musical numbers are breathtaking, seamlessly integrated
+                                into the narrative, and each one is a visual and auditory delight that elevates the
+                                storytelling to new heights. Rocketman transcends the traditional biopic format,
+                                offering not just a recounting of events but an immersive, uplifting celebration of
+                                resilience, creativity, and the transformative power of music. It delves into the highs
+                                and lows of Elton John's career and personal life, presenting a raw and unfiltered look
+                                at his struggles and triumphs. The film's direction, choreography, and cinematography
+                                come together to create a vivid and engaging portrayal that resonates with audiences on
+                                multiple levels. From the stunning opening scenes to the heartfelt conclusion, Rocketman
+                                is a testament to the enduring legacy of one of music's greatest icons. It's a film that
+                                invites viewers to not only witness but also feel the impact of Elton John's journey,
+                                making it a memorable and inspiring experience that celebrates the indomitable human
+                                spirit and the magical world of music.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button className="text-white mx-auto font-Anton font-normal text-2xl leading-none w-[138px] bg-customColor-primary flex justify-center items-center rounded-[52px] py-2">
+                    POST
+                </button>
+            </section>
+
+            <section className="mt-[100px]">
+                <Carousel
+                    title={'Best Reviews'}
+                    breakPoints={breakPointsCarouselReview}
+                    mode="review"
+                    titlePrimaryColor
+                >
+                    {listDataCarouselVideo.map((_, index) => (
+                        <ItemReview key={index} useFont />
+                    ))}
+                </Carousel>
+            </section>
+
+            <section className="mt-[100px]">
+                <Carousel title={'Reviews'} breakPoints={breakPointsCarouselReview} mode="review">
+                    {listDataCarouselVideo.map((_, index) => (
+                        <ItemReview key={index} useFont />
                     ))}
                 </Carousel>
             </section>
