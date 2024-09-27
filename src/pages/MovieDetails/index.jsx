@@ -25,27 +25,35 @@ export default function Index() {
                 </div>
                 <img src={img} alt="movie" className="rounded-[20px] h-full w-full cursor-pointer relative z-10" />
                 <div className="self-end pb-9 relative z-10">
-                    <ul className="flex gap-6 mb-6">
-                        <li className="py-2 px-[18px] border border-[#EAEAEA] rounded-[52px] flex justify-between items-center gap-4">
+                    <ul className="flex gap-6 mb-6 sm-md:mt-4 sm-md:gap-3 sm-md:grid sm-md:grid-cols-2">
+                        <li className="py-2 px-[18px] border border-[#EAEAEA] rounded-[52px] flex justify-between items-center gap-4 sm-md:justify-start">
                             <img src={watchIcon} alt="icon" />
-                            <span className="text-[#EAEAEA] text-2xl leading-none font-normal">Watched</span>
+                            <span className="text-[#EAEAEA] text-2xl sm-md:text-xl  leading-none font-normal">
+                                Watched
+                            </span>
                         </li>
-                        <li className="py-2 px-[18px] border border-[#EAEAEA] rounded-[52px] flex justify-between items-center gap-4">
+                        <li className="py-2 px-[18px] border border-[#EAEAEA] rounded-[52px] flex justify-between items-center gap-4 sm-md:justify-start">
                             <img src={favoriteIcon} alt="icon" />
-                            <span className="text-[#EAEAEA] text-2xl leading-none font-normal">Favorite</span>
+                            <span className="text-[#EAEAEA] text-2xl sm-md:text-xl leading-none font-normal">
+                                Favorite
+                            </span>
                         </li>
-                        <li className="py-2 px-[18px] border border-[#EAEAEA] rounded-[52px] flex justify-between items-center gap-4">
+                        <li className="py-2 px-[18px] border border-[#EAEAEA] rounded-[52px] flex justify-between items-center gap-4 sm-md:justify-start">
                             <img src={shareIcon} alt="icon" />
-                            <span className="text-[#EAEAEA] text-2xl leading-none font-normal">Share</span>
+                            <span className="text-[#EAEAEA] text-2xl sm-md:text-xl leading-none font-normal">
+                                Share
+                            </span>
                         </li>
                     </ul>
                     <div className="flex items-center gap-[3px]">
-                        <img src={startIcon} alt="icon" className="w-9 h-9" />
-                        <span className="text-customColor-primary text-[32px] font-medium">5.0</span>
+                        <img src={startIcon} alt="icon" className="w-9 h-9 sm-md:w-8 sm-md:h-8" />
+                        <span className="text-customColor-primary text-[32px] sm-md:text-2xl font-medium">5.0</span>
                     </div>
-                    <p className="text-white text-[56px] font-normal font-Anton leading-normal">ROCKETMAN</p>
-                    <span className="text-white text-2xl leading-none font-semibold">2019.05.31</span>
-                    <div className="mt-6 flex gap-8">
+                    <p className="text-white text-[56px] sm-md:text-5xl sm-md:leading-relaxed font-normal font-Anton leading-normal">
+                        ROCKETMAN
+                    </p>
+                    <span className="text-white text-2xl sm-md:text-xl leading-none font-semibold">2019.05.31</span>
+                    <div className="mt-6 flex flex-wrap gap-8 sm-md:gap-4">
                         <span className="w-12 h-12 px-1  rounded-full bg-white flex justify-center items-center">
                             <img src={netflixLogon} alt="logo" />
                         </span>
@@ -56,7 +64,7 @@ export default function Index() {
                             <img src={primeLogo} alt="logo" />
                         </span>
                     </div>
-                    <ul className="mt-6 flex gap-4">
+                    <ul className="mt-6 flex flex-wrap gap-4 sm-md:gap-3">
                         <li className="text-[#EAEAEA] text-[15px] font-normal px-3 py-1 bg-[#222] rounded-[52px]">
                             Action
                         </li>
@@ -92,7 +100,7 @@ export default function Index() {
                 </div>
             </section>
 
-            <section className="mt-[72px]">
+            <section className="mt-[72px] sm-md:mt-[30px] sm-md:pe-6">
                 <Carousel breakPoints={breakPointsCarouselVideos} title={'Videos'} mode={'review'} useFont>
                     {listDataCarouselVideo.map((item, index) => (
                         <ItemVideo key={index} title={item.title} urlImg={item.img} date={item.date} />
@@ -100,22 +108,24 @@ export default function Index() {
                 </Carousel>
             </section>
 
-            <section className="mt-[100px]">
-                <h3 className="text-white font-Anton text-[32px] font-normal leading-none">Wirte Criticism</h3>
-                <div className="mt-9 mb-8">
+            <section className="mt-[100px] sm-md:mt-[68px]">
+                <h3 className="text-white font-Anton text-[32px] sm-md:text-3xl font-normal leading-none">
+                    Wirte Criticism
+                </h3>
+                <div className="mt-9 mb-8 sm-md:mt-8">
                     <p className="text-[#EAEAEA] text-2xl leading-none font-normal mb-2">ROCKETMAN</p>
                     <span className="text-[#EAEAEA] text-xl leading-none font-normal">MY Rating</span>
-                    <div className="my-[35px] px-[100px]">
-                        <div className="py-6 rounded-lg  border-2 border-[#555] flex justify-center items-center gap-14">
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px]" />
+                    <div className="my-[35px] px-[100px] sm-md:my-6 sm-md:px-0 sm-md:pe-6">
+                        <div className="py-6 rounded-lg  border-2 border-[#555] flex justify-center items-center flex-wrap sm-md:gap-10 gap-14">
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
                         </div>
                     </div>
                     <span className="text-[#EAEAEA] text-xl leading-none font-normal">MY Criticism</span>
-                    <div className="my-[35px] px-[100px]">
+                    <div className="my-[35px] px-[100px] sm-md:px-0  sm-md:my-6 sm-md:pe-6">
                         <div className="p-2 rounded-lg  border-2 border-[#555] flex justify-center items-center gap-14">
                             <p className="text-[#999] text-sm leading-none font-normal line-clamp-6">
                                 Rocketman is a truly spectacular cinematic journey that beautifully captures the essence
@@ -144,7 +154,7 @@ export default function Index() {
                 </button>
             </section>
 
-            <section className="mt-[100px]">
+            <section className="mt-[100px] sm-md:pe-6">
                 <Carousel
                     title={'Best Reviews'}
                     breakPoints={breakPointsCarouselReview}
@@ -158,7 +168,7 @@ export default function Index() {
                 </Carousel>
             </section>
 
-            <section className="mt-[100px]">
+            <section className="mt-[100px] sm-md:pe-6">
                 <Carousel title={'Reviews'} breakPoints={breakPointsCarouselReview} mode="review" useFont>
                     {listDataCarouselVideo.map((_, index) => (
                         <ItemReview key={index} useFont />

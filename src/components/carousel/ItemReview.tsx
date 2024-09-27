@@ -67,7 +67,7 @@ export default function ItemReview({ showEllipsis, showText, showHasTag }: Props
                 music.
             </p>
             <span className="text-customColor-primary text-sm leading-none font-Anton">more</span>
-            <div className="mt-[19px] flex gap-4">
+            <div className="mt-[19px] flex gap-4 flex-wrap ">
                 <div className="flex items-center gap-1">
                     <img src={iconLike} alt="icon" />
                     <span className="text-customColor-primary text-base leading-none font-medium">3964</span>

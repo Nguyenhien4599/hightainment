@@ -10,7 +10,7 @@ interface Props {
 
 export default function ItemVideo({ title, urlImg, date }: Props) {
     return (
-        <div className="grid grid-cols-[365px] relative">
+        <div className="grid grid-cols-[365px] relative sm-md:grid-cols-1">
             <img src={urlImg} alt="alt" className="rounded-lg w-full object-cover max-h-[200px]" />
             <span className="absolute top-[62%] left-[6%] cursor-pointer w-6 h-6 rounded-full border border-[#FFF] block flex justify-center items-center">
                 <img src={playIcon} alt="icon" />

@@ -33,7 +33,7 @@ export default function Index() {
                 </div>
             </header>
 
-            <section className="mt-[72px]">
+            <section className="mt-[72px] sm-md:pe-6">
                 <Carousel title={'My Reviews'} breakPoints={breakPointsCarouselReview} mode="review">
                     {data.map((_, index) => (
                         <ItemReview key={index} showEllipsis />
