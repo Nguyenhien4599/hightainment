@@ -23,7 +23,11 @@ export default function Index() {
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-80"></div>
                     <img src={banner} alt="anh" />
                 </div>
-                <img src={img} alt="movie" className="rounded-[20px] h-full w-full cursor-pointer relative z-10" />
+                <img
+                    src={img}
+                    alt="movie"
+                    className="rounded-[20px] object-center object-cover h-full w-full cursor-pointer relative z-10"
+                />
                 <div className="self-end pb-9 relative z-10">
                     <ul className="flex gap-6 mb-6 sm-md:mt-4 sm-md:gap-3 sm-md:grid sm-md:grid-cols-2">
                         <li className="py-2 px-[18px] border border-[#EAEAEA] rounded-[52px] flex justify-between items-center gap-4 sm-md:justify-start">
