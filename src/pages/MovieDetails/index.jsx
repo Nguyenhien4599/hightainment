@@ -116,12 +116,12 @@ export default function Index() {
                     <p className="text-[#EAEAEA] text-2xl leading-none font-normal mb-2">ROCKETMAN</p>
                     <span className="text-[#EAEAEA] text-xl leading-none font-normal">MY Rating</span>
                     <div className="my-[35px] px-[100px] sm-md:my-6 sm-md:px-0 sm-md:pe-6">
-                        <div className="py-6 rounded-lg  border-2 border-[#555] flex justify-center items-center flex-wrap sm-md:gap-10 gap-14">
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
-                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-14 sm-md:h-14" />
+                        <div className="py-6 rounded-lg  border-2 border-[#555] flex justify-center items-center flex-wrap sm-md:gap-8 gap-14">
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-8 sm-md:h-8" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-8 sm-md:h-8" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-8 sm-md:h-8" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-8 sm-md:h-8" />
+                            <img src={startIcon} alt="icon" className="w-[72px] h-[72px] sm-md:w-8 sm-md:h-8" />
                         </div>
                     </div>
                     <span className="text-[#EAEAEA] text-xl leading-none font-normal">MY Criticism</span>
